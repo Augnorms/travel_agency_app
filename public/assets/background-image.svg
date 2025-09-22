@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1400 300"
+     preserveAspectRatio="xMidYMid meet"
+     style="width:100%; height:auto; display:block;">
+
+  <defs>
+    <!-- Background gradient -->
+    <linearGradient id="bgGradient" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0%" stop-color="#0057B8" />
+      <stop offset="100%" stop-color="#3399FF" />
+    </linearGradient>
+
+    <!-- Subtle pattern overlay -->
+    <pattern id="circlePattern" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="20" cy="20" r="2" fill="white" opacity="0.1" />
+    </pattern>
+
+    <!-- Glow filter for logo circle -->
+    <filter id="logoGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <style>
+      .logoText { 
+        font-family: Arial, sans-serif; 
+        font-size: 72px; 
+        font-weight: bold; 
+        fill: white; 
+      }
+      .superscript { 
+        font-size: 28px; 
+        baseline-shift: super; 
+      }
+      .commission { 
+        font-family: Arial, sans-serif; 
+        font-size: 36px; 
+        fill: white; 
+        font-weight: 600; 
+      }
+
+      /* Responsive inside SVG */
+      @media all and (max-width: 1000px) {
+        .logoText { font-size: 60px; }
+        .superscript { font-size: 24px; }
+        .commission { font-size: 30px; }
+      }
+      @media all and (max-width: 600px) {
+        .logoText { font-size: 48px; }
+        .superscript { font-size: 20px; }
+        .commission { font-size: 24px; }
+      }
+    </style>
+  </defs>
+
+  <!-- Full background -->
+  <rect width="1400" height="300" fill="url(#bgGradient)" />
+  <rect width="1400" height="300" fill="url(#circlePattern)" />
+
+  <!-- Decorative shape at bottom for visual interest -->
+  <path d="M0,300 L0,240 C300,180 600,220 900,180 L1400,100 L1400,300 Z" fill="white" opacity="0.15" />
+
+  <!-- Centered content group -->
+  <g transform="translate(700,150)" text-anchor="middle" filter="url(#logoGlow)">
+
+    <!-- Logo circle -->
+    <circle cx="0" cy="-40" r="80" fill="#0057B8" stroke="white" stroke-width="3"/>
+
+    <!-- S^2 -->
+    <text x="0" y="-40" class="logoText">S<tspan class="superscript" dx="-8" dy="-20">2</tspan></text>
+    <!-- C^2 -->
+    <text x="0" y="10" class="logoText">C<tspan class="superscript" dx="-8" dy="-20">2</tspan></text>
+
+    <!-- Commission text -->
+    <text x="0" y="120" class="commission">SHAMA SISTER CITY COMMISSION</text>
+
+  </g>
+
+</svg>
