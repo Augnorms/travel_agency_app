@@ -1,0 +1,16 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Blue circle background -->
+  <circle cx="100" cy="100" r="95" fill="#0057B8" />
+
+  <!-- S with superscript 2 -->
+  <text x="95" y="100" font-family="Arial, sans-serif" font-size="48" fill="white" text-anchor="middle">
+    S
+    <tspan dx="-15" dy="-22" font-size="20">2</tspan>
+  </text>
+
+  <!-- C with superscript 2 -->
+  <text x="95" y="139" font-family="Arial, sans-serif" font-size="48" fill="white" text-anchor="middle">
+    C
+    <tspan dx="-15" dy="-22" font-size="20">2</tspan>
+  </text>
+</svg>
