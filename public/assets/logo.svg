@@ -53,7 +53,7 @@
   <circle cx="100" cy="100" r="95" class="border" />
 
   <!-- S² -->
-  <text x="100" y="90" class="letter" filter="url(#bevel3D)">
+  <text x="100" y="100" class="letter" filter="url(#bevel3D)">
     S<tspan dx="-5" dy="-22" class="sup">2</tspan>
   </text>
 

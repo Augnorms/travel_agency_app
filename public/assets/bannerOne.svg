@@ -50,10 +50,10 @@
   <polygon points="0,0 850,0 650,450 0,450" fill="#ffffff" opacity="0.15"/>
 
   <!-- Logo group: reposition or scale in responsive media via CSS -->
-  <g id="logoGroup" transform="translate(1000,230)" filter="url(#glowFilter)" text-anchor="middle">
+  <g id="logoGroup" transform="translate(1000,230)" filter="url(#bevel3D)" text-anchor="middle">
     <circle cx="0" cy="0" r="110" fill="#0057B8"/>
-    <text x="0" y="-30" class="logoBase">S<tspan class="sup2" dx="-8" dy="-20">2</tspan></text>
-    <text x="0" y="60" class="logoBase">C<tspan class="sup2" dx="-8" dy="-20">2</tspan></text>
+    <text x="0" y="-10" class="logoBase">S<tspan class="sup2" dx="-8" dy="-20">2</tspan></text>
+    <text x="0" y="50" class="logoBase">C<tspan class="sup2" dx="-8" dy="-20">2</tspan></text>
   </g>
 
   <!-- Headline & subtext -->
@@ -62,7 +62,7 @@
 
   <!-- Decorative lines/icons -->
   <path d="M120,230 L600,230" stroke="#e2f0ff" stroke-width="3" opacity="0.6"/>
-  <circle cx="600" cy="230" r="6" fill="#f3f7fb"/>
+  <circle cx="600" cy="230" r="6" fill="#f3f7fb" filter="url(#bevel3D)"/>
   <g transform="translate(120,320) scale(1.2)" opacity="0.85">
     <rect x="0" y="-40" width="40" height="40" fill="#ffffff"/>
     <rect x="50" y="-60" width="30" height="60" fill="#ffffff"/>
