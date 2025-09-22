@@ -14,7 +14,7 @@ export default function Home() {
        bg-no-repeat
     "
     >
-        <div className="absolute inset-0 bg-background/85 pointer-events-none">m</div>
+        <div className="absolute inset-0 bg-background/85 pointer-events-none"></div>
 
         <div className="relative z-10">
 
