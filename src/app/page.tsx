@@ -1,4 +1,7 @@
+"use client"
 
+import Logo from "../../public/svg_component/logo";
+import Banner from "../../public/svg_component/banner";
 
 export default function Home() {
   return (
@@ -6,8 +9,6 @@ export default function Home() {
       className="
        font-sans
        min-h-screen 
-       p-8
-       pb-8
        bg-[url('/assets/background-image.svg')]
        bg-cover
        bg-center
@@ -17,7 +18,8 @@ export default function Home() {
         <div className="absolute inset-0 bg-background/85 pointer-events-none"></div>
 
         <div className="relative z-10">
-
+<Logo />
+<Banner onLearnMore={() => alert("Learn more clicked!")}/>
         </div>
     </div>
   );
