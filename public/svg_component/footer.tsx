@@ -5,7 +5,7 @@ import Logo from "../../public/svg_component/logo";
 export default function Footer() {
   return (
     <footer
-      className="relative z-10 w-full bg-white/20 backdrop-blur-md 
+      className="relative w-full bg-white/20 backdrop-blur-md 
         border-t border-white/30 shadow-2xl px-8 py-10"
     >
       {/* Top row: Logo + Socials */}

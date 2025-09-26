@@ -13,7 +13,7 @@ type BannerProps = {
   height?: string;
   image?: string;
 
-  className?: string;
+  cardStyle?: string;
 
   // Button action
   onLearnMore?: () => void;
@@ -34,19 +34,18 @@ export default function Banner({
   primaryColor = "#0057B8",
   secondaryColor = "#fff",
   accentColor = "#378be6ff",
-  height = "80vh",
+  height = "",
   image = "/assets/banner1.webp",
 
-  className = "",
+  cardStyle = "",
 
   // Button action
   onLearnMore,
 }: BannerProps) {
   return (
     <div
-      className="relative w-full flex items-center justify-center"
+      className="w-full flex items-center justify-center p-8"
       style={{
-        height,
         backgroundImage: `url(${image})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
@@ -56,9 +55,10 @@ export default function Banner({
     >
       {/* Transparent card wrapper */}
       <div
-        className={`relative z-10 flex flex-col items-center text-center
+        className={`flex flex-col items-center text-center
           px-8 py-10 rounded-2xl shadow-2xl border border-white/30 bg-white/20 backdrop-blur-md
-          max-w-6xl w-full ${className}`}
+          max-w-6xl w-full ${cardStyle}`}
+          style={{height:height}}
       >
         {/* Logo on top */}
         <div
