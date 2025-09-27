@@ -1,6 +1,6 @@
 import React from "react";
 import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
-import Logo from "../../public/svg_component/logo";
+import Logo from "./logo";
 
 export default function Footer() {
   return (
@@ -30,7 +30,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Social Icons */}
         {/* Social Icons */}
         <div className="flex space-x-6 justify-center md:justify-end">
           <a
