@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 type BannerProps = {
   headline?: string;
   subtext?: string;
@@ -34,13 +36,12 @@ export default function Banner({
   primaryColor = "#0057B8",
   secondaryColor = "#fff",
   accentColor = "#378be6ff",
-  height = "",
+  height = "70vh",
   image = "/assets/banner1.webp",
 
   cardStyle = "",
 
-  // Button action
-  onLearnMore,
+  
 }: BannerProps) {
   return (
     <div
@@ -57,8 +58,7 @@ export default function Banner({
       <div
         className={`flex flex-col items-center text-center
           px-8 py-10 rounded-2xl shadow-2xl border border-white/30 bg-white/20 backdrop-blur-md
-          max-w-6xl w-full ${cardStyle}`}
-          style={{height:height}}
+          max-w-6xl w-full lg:h-[60vh] ${cardStyle}`}
       >
         {/* Logo on top */}
         <div
@@ -95,15 +95,14 @@ export default function Banner({
         </p>
 
         {/* Learn More Button */}
-        {onLearnMore && (
-          <button
-            onClick={onLearnMore}
-            className="mt-6 px-6 py-2 rounded-lg font-medium bg-white text-blue-700 
-            hover:bg-blue-100 transition cursor-pointer shadow-md"
+          <Link
+            href="/services"
+            className="inline-block px-6 py-3 bg-blue-400 text-white
+             font-semibold rounded-md shadow-md hover:bg-green-700 
+             hover:shadow-lg transition duration-300 mt-6"
           >
             Learn More
-          </button>
-        )}
+          </Link>
       </div>
     </div>
   );
