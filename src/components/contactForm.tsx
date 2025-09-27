@@ -28,7 +28,7 @@ export default function ContactPage() {
 
         {/* === MIDDLE: Blue Background + Overlapping Form (separate block) === */}
         <div className="max-w-6xl mx-auto mt-6 mb-32 lg:mb-32 px-0">
-          <div className="relative w-full min-h-[420px] md:min-h-[520px]">
+          <div className="relative w-full min-h-[430px] md:min-h-[320px]">
             {/* Blue background full block */}
             <div className="absolute inset-0 bg-blue-600 rounded-3xl shadow-lg md:pr-[45%] lg:pr-[40%] z-0" />
 
@@ -158,9 +158,7 @@ export default function ContactPage() {
               </div>
               <div className="text-left">
                 <p className="font-semibold text-gray-800">Location</p>
-                <p className="text-gray-600">
-                  shama-Ghana, Molton-Uk
-                </p>
+                <p className="text-gray-600">shama-Ghana, Molton-Uk</p>
               </div>
             </div>
 
@@ -169,9 +167,13 @@ export default function ContactPage() {
               <div className="bg-blue-100 p-3 rounded-full">
                 <FiMessageSquare className="w-6 h-6 text-blue-600" />
               </div>
-              <div className="text-left">
+              <div className="text-left min-w-0 flex-1">
+                {" "}
+                {/* Important: min-w-0 and flex-1 */}
                 <p className="font-semibold text-gray-800">Email</p>
-                <p className="text-gray-600">shamasistercitycommision@yahoo.com</p>
+                <p className="text-gray-600 truncate">
+                  shamasistercitycommision@yahoo.com
+                </p>
               </div>
             </div>
 
@@ -197,7 +199,6 @@ export default function ContactPage() {
                   <p className="font-semibold text-gray-800">
                     Simple & easy form
                   </p>
-                  <p className="text-gray-600">Live Chat</p>
                 </div>
               </div>
             </div>
