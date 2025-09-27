@@ -29,23 +29,21 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        {/* Fixed Background */}
         <div
           className="
-                font-sans
-                min-h-screen 
-                bg-[url('/assets/background-image.svg')]
-                bg-cover
-                bg-center
-                bg-no-repeat
-             "
-        >
-          {/* Header will be on every page */}
+            fixed inset-0
+            bg-[url('/assets/background-image.svg')]
+            bg-cover bg-center bg-no-repeat
+            opacity-40
+            -z-10
+          "
+        />
+
+        {/* Foreground Content */}
+        <div className="relative z-10 min-h-screen font-sans">
           <Header />
-
-          {/* children */}
           {children}
-
-          {/* Footer will be on every page */}
           <Footer />
         </div>
       </body>

@@ -36,7 +36,6 @@ export default function Banner({
   primaryColor = "#0057B8",
   secondaryColor = "#fff",
   accentColor = "#378be6ff",
-  height = "70vh",
   image = "/assets/banner1.webp",
 
   cardStyle = "",
@@ -58,7 +57,7 @@ export default function Banner({
       <div
         className={`flex flex-col items-center text-center
           px-8 py-10 rounded-2xl shadow-2xl border border-white/30 bg-white/20 backdrop-blur-md
-          max-w-6xl w-full lg:h-[60vh] ${cardStyle}`}
+          max-w-6xl w-full ${cardStyle}`}
       >
         {/* Logo on top */}
         <div

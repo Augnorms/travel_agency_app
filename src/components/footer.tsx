@@ -5,8 +5,8 @@ import Logo from "./logo";
 export default function Footer() {
   return (
     <footer
-      className="relative w-full bg-white/20 backdrop-blur-md 
-        border-t border-white/30 shadow-2xl px-8 py-10"
+      className="relative w-full bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 
+     backdrop-blur-md border-t border-white/30 shadow-2xl px-8 py-10"
     >
       {/* Top row: Logo + Socials */}
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
