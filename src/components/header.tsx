@@ -17,7 +17,7 @@ export default function Header({
   navItems = [
     { label: "Home", href: "/" },
     { label: "About", href: "/about" },
-    { label: "Services", href: "/services" },
+    { label: "Programs", href: "/programs" },
     { label: "Contact", href: "/contact" },
   ],
   bgColor = "white",

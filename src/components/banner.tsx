@@ -95,7 +95,7 @@ export default function Banner({
 
         {/* Learn More Button */}
           <Link
-            href="/services"
+            href="/programs"
             className="inline-block px-6 py-3 bg-blue-400 text-white
              font-semibold rounded-md shadow-md hover:bg-green-700 
              hover:shadow-lg transition duration-300 mt-6"

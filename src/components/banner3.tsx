@@ -9,7 +9,7 @@ const sisterCities = [
     img: "/assets/ghana_pic.webp", // replace with your image path
   },
   {
-    name: "Richmond Upon Thames",
+    name: "South molton",
     country: "UK",
     img: "/assets/uk_pic.webp", // replace with your image path
   },
