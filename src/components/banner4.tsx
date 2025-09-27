@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 export default function Banner4() {
@@ -42,6 +43,14 @@ export default function Banner4() {
               <ProgramCard section={section} />
             </div>
           ))}
+        </div>
+        <div className="mt-10">
+          <Link
+            href="/programs"
+            className="inline-block px-6 py-3 bg-blue-400 text-white font-semibold rounded-md shadow-md hover:bg-green-700 hover:shadow-lg transition duration-300"
+          >
+            Learn More
+          </Link>
         </div>
       </div>
     </section>
