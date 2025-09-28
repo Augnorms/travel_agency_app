@@ -12,7 +12,6 @@ export default function page() {
     <div>
       <div className="relative z-10">
         <ProgramsBanner />
-        <Transparent />
 
         <motion.div
           initial={{ opacity: 0, y: 60 }}
@@ -22,6 +21,8 @@ export default function page() {
         >
           <ProgramsOffering />
         </motion.div>
+
+        <Transparent className="h-[30vh]"/>
 
         <motion.div
           initial={{ opacity: 0, y: 60 }}
