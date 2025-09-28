@@ -32,7 +32,7 @@ export default function Home() {
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <Transparent />
+          <Transparent className="h-[30vh]"/>
         </motion.div>
 
         {/* Banner3 */}

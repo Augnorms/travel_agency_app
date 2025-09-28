@@ -1,11 +1,12 @@
 import React from "react";
 type Prop = {
   show?: boolean;
+  className?:string;
 };
 export default function Transparent(prop: Prop) {
-  const { show } = prop;
+  const { show, className } = prop;
   return (
-    <div className="min-h-[65vh] flex items-center justify-center">
+   <div className={`${className} flex items-center justify-center`}>
       {/* Transparent Glass Div */}
       {show && (
         <div
