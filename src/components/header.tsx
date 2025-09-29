@@ -40,10 +40,14 @@ export default function Header({
       {/* Logo (hidden on mobile, visible md+) */}
        <div className="flex">
             <Logo width={50} height={50} /> 
-            <div className="hidden lg:block  p-2 text-[22px] font-bold text-blue-500">
-              Shama sister city
-            </div>
         </div>
+
+      <div>
+        <h2 className="hidden lg:block p-2 text-[28px] font-bold text-blue-500 underline decoration-[dodgerblue]">
+          Shama Sister City Commission
+        </h2>
+      </div>
+
 
       {/* Desktop nav */}
       <nav className="hidden md:flex space-x-6">

@@ -10,14 +10,16 @@ export default function MissionBanner() {
         {/* Left Side - Text */}
         <div className="space-y-6">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-snug">
-            Building Partnerships, Empowering Communities
+            Building Global Gateway School partnerships, Empowering cities and
+            communities
           </h2>
           <p className="text-gray-700 text-lg md:text-xl">
-            Through <span className="font-semibold">cultural exchange</span>,
-            <span className="font-semibold"> education</span>, and{" "}
+            Through <span className="font-semibold">cultural exchange</span>,{" "}
+            <span className="font-semibold">education</span>, and{" "}
             <span className="font-semibold">community development</span>, we
-            connect Shama (Ghana) and South Molton (UK) to create opportunities
-            that last a lifetime.
+            connect cities in <span className="font-semibold">Africa</span> to
+            cities across the globe to create opportunities that last a
+            lifetime.
           </p>
 
           <Link
