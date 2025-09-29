@@ -4,6 +4,7 @@ import React from "react";
 import AboutBanner from "@/components/aboutBanner";
 import Transparent from "@/components/transparent";
 import AboutPartners from "@/components/aboutPartners";
+import AboutCertificate from "@/components/aboutCertificate";
 import { motion } from "framer-motion";
 
 export default function page() {
@@ -11,6 +12,15 @@ export default function page() {
     <div>
       <div className="relative z-10">
         <AboutBanner />
+
+        <motion.div
+          initial={{ opacity: 0, y: 60 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+         <AboutCertificate />
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 60 }}
