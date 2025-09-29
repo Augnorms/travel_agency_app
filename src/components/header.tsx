@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation"; // ✅ Import for active route
 import Logo from "./logo";
 import { HiMenu, HiX } from "react-icons/hi";
 
@@ -27,6 +28,7 @@ export default function Header({
   className = "",
 }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname(); // ✅ get current route
 
   return (
     <header
@@ -37,10 +39,10 @@ export default function Header({
         boxShadow: `0 2px 10px ${shadowColor}`,
       }}
     >
-      {/* Logo (hidden on mobile, visible md+) */}
-       <div className="flex">
-            <Logo width={50} height={50} /> 
-        </div>
+      {/* Logo */}
+      <div className="flex">
+        <Logo width={50} height={50} />
+      </div>
 
       <div>
         <h2 className="hidden lg:block p-2 text-[28px] font-bold text-blue-500 underline decoration-[dodgerblue]">
@@ -48,24 +50,28 @@ export default function Header({
         </h2>
       </div>
 
-
       {/* Desktop nav */}
       <nav className="hidden md:flex space-x-6">
-        {navItems.map((item, idx) => (
-          <Link
-            key={idx}
-            href={item.href}
-            className="
-              px-4 py-2 rounded-md border-b-2 border-b-[dodgerblue]
-              transition transform duration-200
-              hover:scale-110 hover:shadow-lg
-
-            "
-            style={{ color: textColor }}
-          >
-            {item.label}
-          </Link>
-        ))}
+        {navItems.map((item, idx) => {
+          const isActive = pathname === item.href; // ✅ check if active
+          return (
+            <Link
+              key={idx}
+              href={item.href}
+              className={`px-4 py-2 rounded-md border-b-2 transition transform duration-200
+                hover:scale-110 hover:shadow-lg
+                ${
+                  isActive
+                    ? "border-b-[dodgerblue] font-bold text-blue-600" // ✅ Active style
+                    : "border-b-transparent"
+                }
+              `}
+              style={{ color: textColor }}
+            >
+              {item.label}
+            </Link>
+          );
+        })}
       </nav>
 
       {/* Mobile Hamburger */}
@@ -82,12 +88,12 @@ export default function Header({
       {/* Mobile Menu */}
       <div
         className={`
-        fixed inset-0 h-screen w-[95%] bg-white/95 backdrop-blur-md
-        shadow-lg flex flex-col items-start space-y-6 py-10 px-6
-        transform transition-transform duration-300 ease-in-out
-        md:hidden z-50
-        ${isOpen ? "translate-x-" : "-translate-x-full"}
-      `}
+          fixed inset-0 h-screen w-[95%] bg-white/95 backdrop-blur-md
+          shadow-lg flex flex-col items-start space-y-6 py-10 px-6
+          transform transition-transform duration-300 ease-in-out
+          md:hidden z-50
+          ${isOpen ? "translate-x-0" : "-translate-x-full"}
+        `}
       >
         {/* Close button inside menu */}
         <button
@@ -97,22 +103,27 @@ export default function Header({
           <HiX />
         </button>
 
-        {navItems.map((item, idx) => (
-          <Link
-            key={idx}
-            href={item.href}
-            className="
-                px-4 py-2 rounded-md border-b-2 border-b-transparent
-                transition transform duration-200
+        {navItems.map((item, idx) => {
+          const isActive = pathname === item.href;
+          return (
+            <Link
+              key={idx}
+              href={item.href}
+              className={`px-4 py-2 rounded-md border-b-2 transition transform duration-200
                 hover:scale-110 hover:shadow-lg
-                hover:border-b-[dodgerblue]
-            "
-            style={{ color: textColor }}
-            onClick={() => setIsOpen(false)}
-          >
-            {item.label}
-          </Link>
-        ))}
+                ${
+                  isActive
+                    ? "border-b-[dodgerblue] font-bold text-blue-600"
+                    : "border-b-transparent"
+                }
+              `}
+              style={{ color: textColor }}
+              onClick={() => setIsOpen(false)}
+            >
+              {item.label}
+            </Link>
+          );
+        })}
       </div>
     </header>
   );
