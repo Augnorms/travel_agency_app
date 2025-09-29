@@ -1,14 +1,15 @@
 import React from "react";
 import Image from "next/image";
+import { getInitials } from "@/utils/helpers";
 
 export default function AboutPartners() {
   const partners = [
     { name: "Partner 1", img: "/assets/partner1.jpg" },
     { name: "Aff Filiate", img: "" },
     { name: "Aff Filiate", img: "" },
-    { name: "Partner 4", img: "" }, 
-    { name: "Partner 5", img: "" }, 
-    { name: "Partner 6", img: "" }, 
+    { name: "Partner 4", img: "" },
+    { name: "Partner 5", img: "" },
+    { name: "Partner 6", img: "" },
   ];
 
   return (
@@ -45,12 +46,25 @@ export default function AboutPartners() {
         <CommentCard
           avatar="/assets/partner1.jpg"
           name="Francis Mensah"
-          text="Working with Sister Cities International has been a fantastic experience! Their partnerships create real impact."
+          text={
+            <>
+              Working with <strong className="underline decoration-[dodgerblue]">
+                Sister Cities International</strong> has been
+              a fantastic experience! Their partnerships create real impact.
+            </>
+          }
         />
+
         <CommentCard
           avatar="" // No image, fallback to initials
           name="A F"
-          text="Working with Shama Sister City Commission has been a great experience."
+          text={
+            <>
+              Working with <strong className="underline decoration-[dodgerblue]">
+                Shama Sister City Commission</strong> has
+              been a great experience.
+            </>
+          }
         />
       </div>
     </section>
@@ -88,14 +102,14 @@ function CommentCard({
   name,
   text,
 }: {
-  avatar?: string;
+  avatar: string;
   name: string;
-  text: string;
+  text: React.ReactNode; // 👈 allow JSX, not just string
 }) {
   return (
     <div className="flex justify-center">
       <div className="flex items-start">
-        {/* Circle Avatar outside the card */}
+        {/* Avatar or Initials */}
         <div className="flex-shrink-0">
           {avatar ? (
             <Image
@@ -106,15 +120,18 @@ function CommentCard({
               className="rounded-full object-cover"
             />
           ) : (
-            <div className="w-12 h-12 rounded-full bg-pink-500 flex items-center justify-center text-white font-bold">
-              {getInitials(name)}
+            <div className="w-12 h-12 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold">
+              {name
+                .split(" ")
+                .map((n) => n[0])
+                .join("")
+                .toUpperCase()}
             </div>
           )}
         </div>
 
         {/* Comment Bubble */}
         <div className="relative bg-white p-4 ml-4 rounded-lg shadow-lg border border-gray-200">
-          {/* Pointer (triangle) */}
           <div className="absolute -left-2 top-4 w-0 h-0 border-t-8 border-b-8 border-r-8 border-transparent border-r-white drop-shadow-md"></div>
 
           <h4 className="font-semibold text-gray-800">{name}</h4>
@@ -125,9 +142,3 @@ function CommentCard({
   );
 }
 
-// Utility: Get initials from name
-function getInitials(fullName: string): string {
-  const words = fullName.trim().split(" ");
-  if (words.length === 1) return words[0][0].toUpperCase();
-  return (words[0][0] + words[1][0]).toUpperCase();
-}
