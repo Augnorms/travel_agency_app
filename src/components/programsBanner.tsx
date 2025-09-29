@@ -5,6 +5,7 @@ import Image from "next/image";
 export default function ProgramsBanner() {
   const images = [
     "/assets/lecture1.webp",
+    "/gallery-images/image-8-l-scape.jpeg"
   ];
 
   const [currentImage, setCurrentImage] = useState(0);

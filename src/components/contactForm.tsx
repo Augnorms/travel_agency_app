@@ -26,7 +26,6 @@ export default function ContactPage() {
 
     // Get the response as text first to see what it is
     const responseText = await response.text();
-    console.log("Raw response:", responseText); 
 
     // Check if the response is HTML (indicating an error page)
     if (responseText.startsWith("<!DOCTYPE") || responseText.startsWith("<")) {
@@ -236,7 +235,9 @@ export default function ContactPage() {
               </div>
               <div className="text-left">
                 <p className="font-semibold text-gray-800">Location</p>
-                <p className="text-gray-600">shama-Ghana, Molton-Uk</p>
+                <p className="text-gray-600">
+                  MILTON KEYNES, UNITED KINGDOM
+                </p>
               </div>
             </div>
 
@@ -248,7 +249,9 @@ export default function ContactPage() {
               <div className="text-left min-w-0 flex-1">
                 <p className="font-semibold text-gray-800">Email</p>
                 <p className="text-gray-600 truncate">
-                  shamasistercitycommision@yahoo.com
+                  shamasistercitycommission@yahoo.com
+                  <br/>
+                  fm209281@yahoo.com
                 </p>
               </div>
             </div>
@@ -261,19 +264,22 @@ export default function ContactPage() {
                   <FiPhone className="w-6 h-6 text-blue-600" />
                 </div>
                 <div className="text-left">
-                  <p className="font-semibold text-gray-800">Phone</p>
-                  <p className="text-gray-600">+44 7975963012</p>
+                  <p className="font-semibold text-gray-800">Phone 1</p>
+                  <p className="text-gray-600">
+                    00447975963012
+                  </p>
                 </div>
               </div>
 
               {/* Live Chat Card */}
               <div className="bg-white rounded-xl shadow-md p-6 flex items-start space-x-4">
                 <div className="bg-blue-100 p-3 rounded-full">
-                  <FiMessageSquare className="w-6 h-6 text-blue-600" />
+                  <FiPhone className="w-6 h-6 text-blue-600" />
                 </div>
                 <div className="text-left">
-                  <p className="font-semibold text-gray-800">
-                    Simple & easy form
+                  <p className="font-semibold text-gray-800">Phone 2</p>
+                  <p className="text-gray-800">
+                    00447405294745
                   </p>
                 </div>
               </div>
