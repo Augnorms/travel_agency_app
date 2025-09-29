@@ -5,7 +5,7 @@ import { FaPaperPlane } from "react-icons/fa";
 export default function ContactPage() {
   const [status, setStatus] = useState(""); // "success", "error", "sending", or ""
 
- const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus("sending");
 
@@ -55,7 +55,7 @@ export default function ContactPage() {
       setTimeout(() => setStatus(""), 4000);
     }
   };
-  
+
   return (
     <div className="bg-gray-50 w-full min-h-screen font-sans">
       <div className="container mx-auto px-4 py-8 lg:py-16">
@@ -235,9 +235,7 @@ export default function ContactPage() {
               </div>
               <div className="text-left">
                 <p className="font-semibold text-gray-800">Location</p>
-                <p className="text-gray-600">
-                  MILTON KEYNES, UNITED KINGDOM
-                </p>
+                <p className="text-gray-600">MILTON KEYNES, UNITED KINGDOM</p>
               </div>
             </div>
 
@@ -250,7 +248,7 @@ export default function ContactPage() {
                 <p className="font-semibold text-gray-800">Email</p>
                 <p className="text-gray-600 truncate">
                   shamasistercitycommission@yahoo.com
-                  <br/>
+                  <br />
                   fm209281@yahoo.com
                 </p>
               </div>
@@ -260,27 +258,23 @@ export default function ContactPage() {
             <div className="md:col-span-1 space-y-6">
               {/* Phone Card */}
               <div className="bg-white rounded-xl shadow-md p-6 flex items-start space-x-4">
-                <div className="bg-blue-100 p-3 rounded-full">
+                <div className="bg-blue-100 p-3 rounded-full shrink-0">
                   <FiPhone className="w-6 h-6 text-blue-600" />
                 </div>
-                <div className="text-left">
+                <div className="text-left min-w-0">
                   <p className="font-semibold text-gray-800">Phone 1</p>
-                  <p className="text-gray-600">
-                    00447975963012
-                  </p>
+                  <p className="text-gray-600 break-words">00447975963012</p>
                 </div>
               </div>
 
-              {/* Live Chat Card */}
+              {/* Phone 2 Card */}
               <div className="bg-white rounded-xl shadow-md p-6 flex items-start space-x-4">
-                <div className="bg-blue-100 p-3 rounded-full">
+                <div className="bg-blue-100 p-3 rounded-full shrink-0">
                   <FiPhone className="w-6 h-6 text-blue-600" />
                 </div>
-                <div className="text-left">
+                <div className="text-left min-w-0">
                   <p className="font-semibold text-gray-800">Phone 2</p>
-                  <p className="text-gray-800">
-                    00447405294745
-                  </p>
+                  <p className="text-gray-800 break-words">00447405294745</p>
                 </div>
               </div>
             </div>

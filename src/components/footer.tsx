@@ -33,7 +33,7 @@ export default function Footer() {
         {/* Social Icons */}
         <div className="flex space-x-6 justify-center md:justify-end">
           <a
-            href="#"
+            href="https://web.facebook.com/francis.mensah.1614"
             aria-label="Facebook"
             className="w-10 h-10 flex items-center justify-center 
                rounded-full bg-white/20 text-white text-xl 
