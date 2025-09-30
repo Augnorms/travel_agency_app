@@ -1,9 +1,9 @@
 "use client";
 import { motion } from "framer-motion";
-import Banner from "../components/banner";
-import MissionBanner from "@/components/banner2";
-import Banner3 from "@/components/banner3";
-import Banner4 from "@/components/banner4";
+import Banner from "../components/home/banner";
+import MissionBanner from "@/components/home/banner2";
+import Banner3 from "@/components/home/banner3";
+import Banner4 from "@/components/home/banner4";
 import Transparent from "@/components/transparent";
 
 export default function Home() {

@@ -1,10 +1,10 @@
 "use client";
 
 import React from "react";
-import AboutBanner from "@/components/aboutBanner";
+import AboutBanner from "@/components/about/aboutBanner";
 import Transparent from "@/components/transparent";
-import AboutPartners from "@/components/aboutPartners";
-import AboutCertificate from "@/components/aboutCertificate";
+import AboutPartners from "@/components/about/aboutPartners";
+import AboutCertificate from "@/components/about/aboutCertificate";
 import { motion } from "framer-motion";
 
 export default function page() {

@@ -2,12 +2,18 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation"; // ✅ Import for active route
+import { usePathname } from "next/navigation";
 import Logo from "./logo";
 import { HiMenu, HiX } from "react-icons/hi";
 
+type NavItem = {
+  label: string;
+  href: string;
+  children?: { label: string; href: string }[];
+};
+
 type HeaderProps = {
-  navItems?: { label: string; href: string }[];
+  navItems?: NavItem[];
   bgColor?: string;
   textColor?: string;
   shadowColor?: string;
@@ -18,7 +24,14 @@ export default function Header({
   navItems = [
     { label: "Home", href: "/" },
     { label: "About", href: "/about" },
-    { label: "Programs", href: "/programs" },
+    {
+      label: "Activities",
+      href: "#", // parent, doesn't need a real page
+      children: [
+        { label: "Programs", href: "/programs" },
+        { label: "Donate", href: "/donate" },
+      ],
+    },
     { label: "Gallery", href: "/gallery" },
     { label: "Contact", href: "/contact" },
   ],
@@ -28,7 +41,7 @@ export default function Header({
   className = "",
 }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const pathname = usePathname(); // ✅ get current route
+  const pathname = usePathname();
 
   return (
     <header
@@ -45,31 +58,61 @@ export default function Header({
       </div>
 
       <div>
-        <h2 className="hidden lg:block p-2 text-[28px] font-bold text-blue-500 underline decoration-[dodgerblue]">
-          Shama Sister City Commission
+        <h2 className="hidden lg:block p-2 text-[28px] text-center font-bold text-blue-500 underline decoration-[dodgerblue]">
+          Shama Sister City Commission <br />
+          United Kindom
         </h2>
       </div>
 
       {/* Desktop nav */}
-      <nav className="hidden md:flex space-x-6">
+      <nav className="hidden md:flex space-x-6 relative">
         {navItems.map((item, idx) => {
-          const isActive = pathname === item.href; // ✅ check if active
+          const isChildActive = item.children?.some((child) => pathname.startsWith(child.href));
+          const isActive = pathname === item.href || isChildActive;
+          const hasChildren = item.children && item.children.length > 0;
+
           return (
-            <Link
-              key={idx}
-              href={item.href}
-              className={`px-4 py-2 rounded-md border-b-2 transition transform duration-200
-                hover:scale-110 hover:shadow-lg
-                ${
-                  isActive
-                    ? "border-b-[dodgerblue] font-bold text-blue-600" // ✅ Active style
-                    : "border-b-transparent"
-                }
-              `}
-              style={{ color: textColor }}
-            >
-              {item.label}
-            </Link>
+            <div key={idx} className="relative group">
+              <Link
+                href={item.href}
+                className={`px-4 py-2 rounded-md border-b-2 transition transform duration-200
+                  hover:scale-110 hover:shadow-lg
+                  ${
+                    isActive
+                      ? "border-b-[dodgerblue] font-bold text-blue-600"
+                      : "border-b-transparent"
+                  }
+                `}
+                style={{ color: textColor }}
+              >
+                {item.label}
+              </Link>
+
+              {/* Dropdown (Desktop) */}
+              {/* Dropdown (Desktop) */}
+              {hasChildren && (
+                <div
+                  className="absolute left-0 mt-3 w-48 bg-white border-3 border-blue-200 
+               rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 
+               group-hover:visible group-hover:translate-y-2 transform 
+               transition-all duration-300 z-50
+               before:content-[''] before:absolute before:-top-2 before:left-6
+               before:border-l-8 before:border-r-8 before:border-b-8
+               before:border-l-transparent before:border-r-transparent before:border-b-white"
+                >
+                  {item.children?.map((child, cIdx) => (
+                    <Link
+                      key={cIdx}
+                      href={child.href}
+                      className="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 
+                   border-l-4 border-transparent hover:border-blue-500 rounded-md"
+                    >
+                      {child.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
           );
         })}
       </nav>
@@ -104,24 +147,43 @@ export default function Header({
         </button>
 
         {navItems.map((item, idx) => {
-          const isActive = pathname === item.href;
+          const isChildActive = item.children?.some((child) => pathname.startsWith(child.href));
+          const isActive = pathname === item.href || isChildActive;
+          const hasChildren = item.children && item.children.length > 0;
+
           return (
-            <Link
-              key={idx}
-              href={item.href}
-              className={`px-4 py-2 rounded-md border-b-2 transition transform duration-200
-                hover:scale-110 hover:shadow-lg
-                ${
-                  isActive
-                    ? "border-b-[dodgerblue] font-bold text-blue-600"
-                    : "border-b-transparent"
-                }
-              `}
-              style={{ color: textColor }}
-              onClick={() => setIsOpen(false)}
-            >
-              {item.label}
-            </Link>
+            <div key={idx} className="w-full">
+              <Link
+                href={item.href}
+                className={`block px-4 py-2 rounded-md border-b-2 transition
+                  ${
+                    isActive
+                      ? "border-b-[dodgerblue] font-bold text-blue-600"
+                      : "border-b-transparent"
+                  }
+                `}
+                style={{ color: textColor }}
+                onClick={() => setIsOpen(false)}
+              >
+                {item.label}
+              </Link>
+
+              {/* Sub-links (Mobile) */}
+              {hasChildren && (
+                <div className="ml-6 mt-2 space-y-2">
+                  {item.children?.map((child, cIdx) => (
+                    <Link
+                      key={cIdx}
+                      href={child.href}
+                      className="block px-4 py-2 text-gray-700 hover:text-blue-600"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {child.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
           );
         })}
       </div>

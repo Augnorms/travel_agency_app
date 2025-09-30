@@ -1,10 +1,10 @@
 "use client";
 
 import React from "react";
-import ProgramsBanner from "@/components/programsBanner";
-import ProgramsOffering from "@/components/programsOffering";
+import ProgramsBanner from "@/components/programs/programsBanner";
+import ProgramsOffering from "@/components/programs/programsOffering";
 import Transparent from "@/components/transparent";
-import CoreDuties from "@/components/programsCoreDuty";
+import CoreDuties from "@/components/programs/programsCoreDuty";
 import { motion } from "framer-motion";
 
 export default function page() {
