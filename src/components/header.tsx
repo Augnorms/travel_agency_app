@@ -60,7 +60,7 @@ export default function Header({
       <div>
         <h2 className="hidden lg:block p-2 text-[28px] text-center font-bold text-blue-500 underline decoration-[dodgerblue]">
           Shama Sister City Commission <br />
-          United Kindom
+          United Kingdom
         </h2>
       </div>
 
