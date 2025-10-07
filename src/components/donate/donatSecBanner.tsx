@@ -60,6 +60,28 @@ const sections: Section[] = [
     ],
     buttonText: "Support School Projects",
   },
+    {
+    images: [
+      {
+        src: "/donations/health-screen.png",
+        size: "big",
+      },
+      {
+        src: "/donations/health-screen.png",
+        size: "small",
+        position: "absolute -right-8 -bottom-14",
+      },
+    ],
+    title: "Healthy Communities, Stronger Bonds",
+    subtitle: "Sister City Health Outreach",
+    points: [
+      "✔ Health screening initiative led by Dr. Katrine Govier from South Molton",
+      "✔ A two-week medical exchange at Shama Hospital, Ghana (2011)",
+      "✔ Promoting wellness through Sister City collaboration",
+      "✔ Strengthening global friendship through shared care and service"
+    ],
+    buttonText: "About Our Health Outreach",
+  },
 ];
 
 export default function DonateSecBanner() {
