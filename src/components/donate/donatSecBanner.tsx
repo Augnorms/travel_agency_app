@@ -60,7 +60,7 @@ const sections: Section[] = [
     ],
     buttonText: "Support School Projects",
   },
-    {
+  {
     images: [
       {
         src: "/donations/health-screen.png",
@@ -80,8 +80,31 @@ const sections: Section[] = [
       "✔ Promoting wellness through Sister City collaboration",
       "✔ Strengthening global friendship through shared care and service"
     ],
-    buttonText: "About Our Health Outreach",
+    buttonText: "Our Health Outreach",
   },
+  {
+  images: [
+    {
+      src: "/donations/lower-pra-donate.png",
+      size: "big",
+    },
+    {
+      src: "/donations/lower-pra-donate.png",
+      size: "small",
+      position: "absolute -right-8 -bottom-14",
+    },
+  ],
+  title: "Empowering Communities Through Partnership",
+  subtitle: "Lower Pra Rural Bank CSR Initiative",
+  points: [
+    "✔ Donated 50,000 old Ghana cedis to the Shama District Assembly",
+    "✔ Supported the signing ceremony of the Sister City MoU",
+    "✔ Strengthened collaboration between Shama District and South Molton",
+    "✔ Advocated community-driven development through corporate responsibility",
+  ],
+  buttonText: "About This Initiative",
+}
+
 ];
 
 export default function DonateSecBanner() {

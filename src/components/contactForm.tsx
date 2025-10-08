@@ -12,7 +12,7 @@ export default function ContactPage() {
     const formData = new FormData(e.currentTarget);
 
     const response = await fetch(
-      "https://formsubmit.co/ajax/ac19d0a62d38b2111b61856c79b1bfd3",
+      "https://formsubmit.co/ajax/shamasistercitycommission@yahoo.com",
       {
         method: "POST",
         body: formData,
