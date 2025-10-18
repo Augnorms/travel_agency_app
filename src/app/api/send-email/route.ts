@@ -33,7 +33,7 @@ export async function POST(request: NextRequest) {
     
     const data = await resend.emails.send({
       from: "noreply@shamasistercitycommission.co.uk", // ✅ verified domain sender
-      to: "augustinenormanyo98@gmail.com", // ✅ your Gmail to receive contact messages
+      to: "shamasistercitycommission@yahoo.com", // ✅ your Gmail to receive contact messages
       subject: `New Message from ${firstname} ${lastname}`,
       html: contactTemplate({ firstname, lastname, email, phone, message }),
     });
