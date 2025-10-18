@@ -4,55 +4,96 @@ import { FaPaperPlane } from "react-icons/fa";
 
 export default function ContactPage() {
   const [status, setStatus] = useState(""); // "success", "error", "sending", or ""
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [message, setMessage] = useState("");
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  // const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+  //   setStatus("sending");
+
+  //   const formData = new FormData(e.currentTarget);
+
+  //   const response = await fetch(
+  //     "https://formsubmit.co/ajax/428f97d4fc0452ff5d4932a1bf2a1599",
+  //     {
+  //       method: "POST",
+  //       body: formData,
+  //     }
+  //   );
+
+  //   // Check if the response is OK (status 200-299)
+  //   if (!response.ok) {
+  //     throw new Error(`HTTP error! status: ${response.status}`);
+  //   }
+
+  //   // Get the response as text first to see what it is
+  //   const responseText = await response.text();
+
+  //   // Check if the response is HTML (indicating an error page)
+  //   if (responseText.startsWith("<!DOCTYPE") || responseText.startsWith("<")) {
+  //     throw new Error(
+  //       "FormSubmit returned an HTML error page. The submission may have failed."
+  //     );
+  //   }
+
+  //   // Now try to parse the text as JSON
+  //   try {
+  //     const data = JSON.parse(responseText);
+
+  //     if (data.success) {
+  //       setStatus("success");
+  //       // Fixed line - use e.target instead of e.currentTarget
+  //       const formElement = e.target as HTMLFormElement;
+  //       formElement.reset();
+  //       setTimeout(() => setStatus(""), 4000);
+  //     } else {
+  //       setStatus("error");
+  //       setTimeout(() => setStatus(""), 4000);
+  //     }
+  //   } catch (parseError) {
+  //     console.error("Error parsing JSON:", parseError);
+  //     setStatus("error");
+  //     setTimeout(() => setStatus(""), 4000);
+  //   }
+  // };
+
+  const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     setStatus("sending");
 
-    const formData = new FormData(e.currentTarget);
-
-    const response = await fetch(
-      "https://formsubmit.co/ajax/428f97d4fc0452ff5d4932a1bf2a1599",
-      {
-        method: "POST",
-        body: formData,
-      }
-    );
-
-    // Check if the response is OK (status 200-299)
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    // Get the response as text first to see what it is
-    const responseText = await response.text();
-
-    // Check if the response is HTML (indicating an error page)
-    if (responseText.startsWith("<!DOCTYPE") || responseText.startsWith("<")) {
-      throw new Error(
-        "FormSubmit returned an HTML error page. The submission may have failed."
-      );
-    }
-
-    // Now try to parse the text as JSON
     try {
-      const data = JSON.parse(responseText);
-      console.log(data);
+      const res = await fetch("/api/send-email", {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          firstname,
+          lastname,
+          email,
+          phone,
+          message
+        })
+      });
 
-      if (data.success) {
+      if (res.ok) {
+         console.log(res)
         setStatus("success");
-        // Fixed line - use e.target instead of e.currentTarget
-        const formElement = e.target as HTMLFormElement;
-        formElement.reset();
-        setTimeout(() => setStatus(""), 4000);
+        // Clear form
+        setFirstname("");
+        setLastname("");
+        setEmail("");
+        setPhone("");
+        setMessage("");
+        setTimeout(() => setStatus(""), 3000)
+        
       } else {
         setStatus("error");
-        setTimeout(() => setStatus(""), 4000);
       }
-    } catch (parseError) {
-      console.error("Error parsing JSON:", parseError);
+    } catch (error) {
+      console.error("Error submitting form:", error);
       setStatus("error");
-      setTimeout(() => setStatus(""), 4000);
     }
   };
 
@@ -106,13 +147,12 @@ export default function ContactPage() {
               {/* Status Message - Appears above the form */}
               {status && (
                 <div
-                  className={`mb-6 p-4 rounded-lg text-center font-medium ${
-                    status === "success"
+                  className={`mb-6 p-4 rounded-lg text-center font-medium ${status === "success"
                       ? "bg-green-100 text-green-800 border border-green-200"
                       : status === "error"
-                      ? "bg-red-100 text-red-800 border border-red-200"
-                      : "bg-blue-100 text-blue-800 border border-blue-200"
-                  }`}
+                        ? "bg-red-100 text-red-800 border border-red-200"
+                        : "bg-blue-100 text-blue-800 border border-blue-200"
+                    }`}
                 >
                   {status === "success" &&
                     "✅ Message sent successfully! We'll get back to you soon."}
@@ -126,7 +166,7 @@ export default function ContactPage() {
                 Need help contact us
               </h3>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="space-y-6">
                 <input type="hidden" name="_captcha" value="false" />
                 <input
                   type="hidden"
@@ -149,6 +189,8 @@ export default function ContactPage() {
                       name="first-name"
                       className="w-full mt-1 pb-2 border-b-2 border-gray-200 focus:outline-none focus:border-blue-500 transition"
                       required
+                      value={firstname}
+                      onChange={(e) => setFirstname(e.target.value)}
                     />
                   </div>
                   <div>
@@ -164,6 +206,8 @@ export default function ContactPage() {
                       name="last-name"
                       className="w-full mt-1 pb-2 border-b-2 border-gray-200 focus:outline-none focus:border-blue-500 transition"
                       required
+                      value={lastname}
+                      onChange={(e) => setLastname(e.target.value)}
                     />
                   </div>
                 </div>
@@ -180,6 +224,8 @@ export default function ContactPage() {
                       name="email"
                       className="w-full mt-1 pb-2 border-b-2 border-gray-200 focus:outline-none focus:border-blue-500 transition"
                       required
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                     />
                   </div>
                   <div>
@@ -191,6 +237,9 @@ export default function ContactPage() {
                       id="phone"
                       name="phone"
                       className="w-full mt-1 pb-2 border-b-2 border-gray-200 focus:outline-none focus:border-blue-500 transition"
+                      required
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
                     />
                   </div>
                 </div>
@@ -206,18 +255,21 @@ export default function ContactPage() {
                     rows={3}
                     className="w-full mt-1 pb-2 border-b-2 border-gray-200 focus:outline-none focus:border-blue-500 transition"
                     required
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
                   />
                 </div>
 
                 {/* Submit Button */}
                 <button
+                  onClick={handleSubmit}
                   type="submit"
                   disabled={status === "sending"}
                   className="w-full cursor-pointer bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-700 transition-colors duration-300 disabled:bg-blue-400 disabled:cursor-not-allowed"
                 >
                   {status === "sending" ? "SENDING..." : "SUBMIT"}
                 </button>
-              </form>
+              </div>
             </div>
           </div>
         </div>
