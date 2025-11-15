@@ -30,6 +30,7 @@ export default function Header({
       children: [
         { label: "Programs", href: "/programs" },
         { label: "Donate", href: "/donate" },
+        { label: "Events", href: "/events" },
       ],
     },
     { label: "Gallery", href: "/gallery" },
