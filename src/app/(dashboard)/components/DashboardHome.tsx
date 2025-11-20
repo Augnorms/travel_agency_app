@@ -1,0 +1,110 @@
+import { FiUpload, FiImage, FiVideo, FiCreditCard, FiEdit3, FiUsers, FiBarChart2, FiAlertCircle } from "react-icons/fi";
+import { useDashboardNav } from "@/app/(dashboard)/ContextApi/dashbordContext";
+
+type CardProps = {
+  title: string;
+  value: string | number;
+  icon?: React.ReactNode;
+  bgColor?: string;
+  textColor?: string;
+};
+
+const AnalyticsCard = ({ title, value, icon, bgColor = "bg-white", textColor = "text-gray-500" }: CardProps) => (
+  <div className={`${bgColor} rounded-xl shadow p-5 border border-gray-100 flex flex-col items-start`}>
+    <div className="flex items-center justify-between w-full">
+      <p className={`${textColor} text-sm`}>{title}</p>
+      {icon && <div className="text-2xl">{icon}</div>}
+    </div>
+    <h2 className="text-3xl font-bold mt-2">{value}</h2>
+  </div>
+);
+
+export default function DashboardHome() {
+  const { setActiveRoute } = useDashboardNav();
+
+  return (
+    <div className="w-full h-full p-6 space-y-8">
+      {/* HEADER */}
+      <div className="flex justify-between items-center">
+        <div>
+          <h1 className="text-3xl font-bold text-gray-800">Dashboard Overview</h1>
+          <p className="text-gray-500 mt-1">Welcome back! Here's your activity summary.</p>
+        </div>
+      </div>
+
+      {/* KPI CARDS */}
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
+        <AnalyticsCard title="Total Uploads" value={124} icon={<FiUpload className="text-indigo-600" />} />
+        <AnalyticsCard title="Total Users" value={58} icon={<FiUsers className="text-green-600" />} />
+        <AnalyticsCard title="Upcoming Events" value={12} icon={<FiBarChart2 className="text-rose-600" />} />
+        <AnalyticsCard title="Payments Processed" value="$4,560" icon={<FiCreditCard className="text-green-600" />} />
+        <AnalyticsCard title="Storage Used" value="72%" icon={<FiAlertCircle className="text-yellow-600" />} />
+      </div>
+
+      {/* QUICK ACTIONS */}
+      <h3 className="text-xl font-semibold mb-4 text-gray-700">Quick Actions</h3>
+      <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+        <button
+          className="flex flex-col items-center bg-indigo-100 hover:bg-indigo-200 p-4 rounded-xl cursor-pointer"
+          onClick={() => setActiveRoute({ name: "Users", component: <div>Users Page</div> })}
+        >
+          <FiImage className="text-3xl text-indigo-600" />
+          <span className="mt-2 font-medium">Edit Users</span>
+        </button>
+
+        <button
+          className="flex flex-col items-center bg-rose-100 hover:bg-rose-200 p-4 rounded-xl cursor-pointer"
+          onClick={() => setActiveRoute({ name: "Event", component: <div>Event Page</div> })}
+        >
+          <FiVideo className="text-3xl text-rose-600" />
+          <span className="mt-2 font-medium">Edit Events</span>
+        </button>
+
+        <button
+          className="flex flex-col items-center bg-blue-100 hover:bg-blue-200 p-4 rounded-xl cursor-pointer"
+          onClick={() => setActiveRoute({ name: "Gallery", component: <div>Gallery Page</div> })}
+        >
+          <FiUpload className="text-3xl text-blue-600" />
+          <span className="mt-2 font-medium">Edit Gallery</span>
+        </button>
+
+        <button
+          className="flex flex-col items-center bg-green-100 hover:bg-green-200 p-4 rounded-xl cursor-pointer"
+          onClick={() => setActiveRoute({ name: "Payment", component: <div>Payment Page</div> })}
+        >
+          <FiCreditCard className="text-3xl text-green-600" />
+          <span className="mt-2 font-medium">Payments</span>
+        </button>
+
+        <button
+          className="flex flex-col items-center bg-yellow-100 hover:bg-yellow-200 p-4 rounded-xl cursor-pointer"
+          onClick={() => setActiveRoute({ name: "About", component: <div>About Page</div> })}
+        >
+          <FiEdit3 className="text-3xl text-yellow-600" />
+          <span className="mt-2 font-medium">Edit About Page</span>
+        </button>
+      </div>
+
+      {/* RECENT ACTIVITY / UPLOADS */}
+      <div className="mt-8">
+        <h3 className="text-xl font-semibold mb-4 text-gray-700">Recent Activity</h3>
+
+        <div className="grid grid-cols-1 md:grid-cols-6 gap-4">
+          {/* Example recent uploads */}
+          {[1, 2, 3, 4, 5, 6].map((i) => (
+            <div
+              key={i}
+              className="w-full h-28 bg-gray-200 rounded-xl p-4 flex flex-col justify-between animate-pulse"
+            >
+              <div className="flex justify-between items-start">
+                <span className="bg-gray-300 h-4 w-20 rounded"></span>
+                <span className="bg-gray-300 h-4 w-10 rounded"></span>
+              </div>
+              <div className="bg-gray-300 h-4 w-full rounded"></div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}

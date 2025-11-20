@@ -22,7 +22,7 @@ type HeaderProps = {
 
 export default function Header({
   navItems = [
-    { label: "Home", href: "/" },
+    { label: "Home", href: "/home" },
     { label: "About", href: "/about" },
     {
       label: "Activities",
@@ -35,6 +35,7 @@ export default function Header({
     },
     { label: "Gallery", href: "/gallery" },
     { label: "Contact", href: "/contact" },
+    { label: "Login", href: "/login" },
   ],
   bgColor = "white",
   textColor = "black",
@@ -76,18 +77,13 @@ export default function Header({
             <div key={idx} className="relative group">
               <Link
                 href={item.href}
-                className={`px-4 py-2 rounded-md border-b-2 transition transform duration-200
-                  hover:scale-110 hover:shadow-lg
-                  ${
-                    isActive
-                      ? "border-b-[dodgerblue] font-bold text-blue-600"
-                      : "border-b-transparent"
-                  }
-                `}
-                style={{ color: textColor }}
+                className={`px-4 py-2 rounded-md border-b-2 transition transform duration-200 hover:scale-110 hover:shadow-lg ${isActive ? "border-b-[dodgerblue] font-bold text-blue-600" : "border-b-transparent"
+                  } ${item.href === "/login" ? "md:border md:border-blue-500 md:bg-blue-400 text-white md:font-semibold" : ""
+                  }`}
               >
                 {item.label}
               </Link>
+
 
               {/* Dropdown (Desktop) */}
               {/* Dropdown (Desktop) */}
@@ -157,11 +153,11 @@ export default function Header({
               <Link
                 href={item.href}
                 className={`block px-4 py-2 rounded-md border-b-2 transition
-                  ${
-                    isActive
-                      ? "border-b-[dodgerblue] font-bold text-blue-600"
-                      : "border-b-transparent"
+                  ${isActive
+                    ? "border-b-[dodgerblue] font-bold text-blue-600"
+                    : "border-b-transparent"
                   }
+                  ${item.href === "/login" && "hidden"}
                 `}
                 style={{ color: textColor }}
                 onClick={() => setIsOpen(false)}
