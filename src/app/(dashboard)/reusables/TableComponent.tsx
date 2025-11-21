@@ -4,6 +4,7 @@ import { ButtonSpinner } from "@/app/(dashboard)/reusables/Spinner";
 interface TableProps {
   headers: { key: string; label: string }[];
   items: Record<string, any>[];
+  classhead?: string;
   renderCellContent?: (
     headerKey: string,
     item: Record<string, any>,
@@ -12,6 +13,7 @@ interface TableProps {
 
 const TableComponent: React.FC<TableProps> = ({
   headers,
+  classhead,
   items,
   renderCellContent,
 }) => {
@@ -51,7 +53,7 @@ const TableComponent: React.FC<TableProps> = ({
   return (
     <div className="">
       <table className="min-w-full border border-gray-300">
-        <thead className="bg-gray-100">
+        <thead className={classhead ? classhead : `bg-gray-100`}>
           <tr>
             {headers?.map((header) => (
               <th

@@ -28,6 +28,7 @@ export default function DashboardUI({ user }: { user: any }) {
 function DashboardContent({ user, routes }: { user: any; routes: any }) {
 
     const { activeRoute, setActiveRoute } = useDashboardNav();
+    
     const initials = `${user.firstname?.[0] ?? ""}${user.lastname?.[0] ?? ""}`.toUpperCase();
 
     return (

@@ -1,5 +1,10 @@
 import { FiUpload, FiImage, FiVideo, FiCreditCard, FiEdit3, FiUsers, FiBarChart2, FiAlertCircle } from "react-icons/fi";
 import { useDashboardNav } from "@/app/(dashboard)/ContextApi/dashbordContext";
+import UsersPage from "../components/UsersPage";
+import AboutPage from "../components/AboutPage";
+import GalleryPage from "../components/GalleryPage";
+import EventPage from "../components/EventPage";
+import Payment from "../components/Payment";
 
 type CardProps = {
   title: string;
@@ -44,45 +49,46 @@ export default function DashboardHome() {
       {/* QUICK ACTIONS */}
       <h3 className="text-xl font-semibold mb-4 text-gray-700">Quick Actions</h3>
       <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-        <button
-          className="flex flex-col items-center bg-indigo-100 hover:bg-indigo-200 p-4 rounded-xl cursor-pointer"
-          onClick={() => setActiveRoute({ name: "Users", component: <div>Users Page</div> })}
-        >
-          <FiImage className="text-3xl text-indigo-600" />
-          <span className="mt-2 font-medium">Edit Users</span>
-        </button>
+    <button
+  className="flex flex-col items-center bg-indigo-100 hover:bg-indigo-200 p-4 rounded-xl cursor-pointer"
+  onClick={() => setActiveRoute({ name: "Users", component: <UsersPage /> })}
+>
+  <FiImage className="text-3xl text-indigo-600" />
+  <span className="mt-2 font-medium">Edit Users</span>
+</button>
 
-        <button
-          className="flex flex-col items-center bg-rose-100 hover:bg-rose-200 p-4 rounded-xl cursor-pointer"
-          onClick={() => setActiveRoute({ name: "Event", component: <div>Event Page</div> })}
-        >
-          <FiVideo className="text-3xl text-rose-600" />
-          <span className="mt-2 font-medium">Edit Events</span>
-        </button>
+<button
+  className="flex flex-col items-center bg-rose-100 hover:bg-rose-200 p-4 rounded-xl cursor-pointer"
+  onClick={() => setActiveRoute({ name: "Event", component: <EventPage /> })}
+>
+  <FiVideo className="text-3xl text-rose-600" />
+  <span className="mt-2 font-medium">Edit Events</span>
+</button>
 
-        <button
-          className="flex flex-col items-center bg-blue-100 hover:bg-blue-200 p-4 rounded-xl cursor-pointer"
-          onClick={() => setActiveRoute({ name: "Gallery", component: <div>Gallery Page</div> })}
-        >
-          <FiUpload className="text-3xl text-blue-600" />
-          <span className="mt-2 font-medium">Edit Gallery</span>
-        </button>
+<button
+  className="flex flex-col items-center bg-blue-100 hover:bg-blue-200 p-4 rounded-xl cursor-pointer"
+  onClick={() => setActiveRoute({ name: "Gallery", component: <GalleryPage /> })}
+>
+  <FiUpload className="text-3xl text-blue-600" />
+  <span className="mt-2 font-medium">Edit Gallery</span>
+</button>
 
-        <button
-          className="flex flex-col items-center bg-green-100 hover:bg-green-200 p-4 rounded-xl cursor-pointer"
-          onClick={() => setActiveRoute({ name: "Payment", component: <div>Payment Page</div> })}
-        >
-          <FiCreditCard className="text-3xl text-green-600" />
-          <span className="mt-2 font-medium">Payments</span>
-        </button>
+<button
+  className="flex flex-col items-center bg-green-100 hover:bg-green-200 p-4 rounded-xl cursor-pointer"
+  onClick={() => setActiveRoute({ name: "Payment", component: <Payment /> })}
+>
+  <FiCreditCard className="text-3xl text-green-600" />
+  <span className="mt-2 font-medium">Payments</span>
+</button>
 
-        <button
-          className="flex flex-col items-center bg-yellow-100 hover:bg-yellow-200 p-4 rounded-xl cursor-pointer"
-          onClick={() => setActiveRoute({ name: "About", component: <div>About Page</div> })}
-        >
-          <FiEdit3 className="text-3xl text-yellow-600" />
-          <span className="mt-2 font-medium">Edit About Page</span>
-        </button>
+<button
+  className="flex flex-col items-center bg-yellow-100 hover:bg-yellow-200 p-4 rounded-xl cursor-pointer"
+  onClick={() => setActiveRoute({ name: "About", component: <AboutPage /> })}
+>
+  <FiEdit3 className="text-3xl text-yellow-600" />
+  <span className="mt-2 font-medium">Edit About Page</span>
+</button>
+
       </div>
 
       {/* RECENT ACTIVITY / UPLOADS */}
