@@ -13,7 +13,7 @@ export default function DashboardUI({ user }: { user: any }) {
         { name: "Dashboard", component: <DashboardHome /> },
         { name: "Users", component: <UsersPage /> },
         { name: "About", component: <AboutPage /> },
-        { name: "Gallery", component: <GalleryPage /> },
+        // { name: "Gallery", component: <GalleryPage /> },
         { name: "Event", component: <EventPage /> },
         { name: "Payment", component: <Payment /> },
     ];
@@ -28,7 +28,7 @@ export default function DashboardUI({ user }: { user: any }) {
 function DashboardContent({ user, routes }: { user: any; routes: any }) {
 
     const { activeRoute, setActiveRoute } = useDashboardNav();
-    
+
     const initials = `${user.firstname?.[0] ?? ""}${user.lastname?.[0] ?? ""}`.toUpperCase();
 
     return (

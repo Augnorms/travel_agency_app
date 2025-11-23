@@ -7,9 +7,10 @@ interface ModalProps {
   onClose: () => void;
   title?: string;
   children: React.ReactNode;
+    maxWidth?: string;  
 }
 
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
+const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children, maxWidth }) => {
   const [visible, setVisible] = useState(isOpen);
 
   useEffect(() => {
@@ -35,9 +36,11 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
     >
       {/* Glass-like Modal Container */}
       <div
-        className={`bg-white/20 rounded-xl shadow-lg w-full max-w-lg mx-4 relative transform transition-all duration-300 ${
-          isOpen && visible ? "opacity-100 scale-100" : "opacity-0 scale-95"
-        }`}
+        className={`
+          bg-white/20 rounded-xl shadow-lg w-full mx-4 relative transform transition-all duration-300
+          ${isOpen && visible ? "opacity-100 scale-100" : "opacity-0 scale-95"}
+        `}
+        style={{ maxWidth: maxWidth || "32rem" }}  // Default = max-w-lg (32rem)
       >
         {/* Header */}
         {title && (

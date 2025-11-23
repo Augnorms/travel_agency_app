@@ -394,7 +394,7 @@ useEffect(() => {
         disabled={loadingData}
       />
 
-      <Modal isOpen={isOpen} onClose={onClose} title={isEdit ? "Edit User" : "Create User"}>
+      <Modal isOpen={isOpen} onClose={onClose} maxWidth="50%" title={isEdit ? "Edit User" : "Create User"}>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <Inputs

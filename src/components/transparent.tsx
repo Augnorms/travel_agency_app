@@ -6,17 +6,19 @@ type Prop = {
 export default function Transparent(prop: Prop) {
   const { show, className } = prop;
   return (
-   <div className={`${className} flex items-center justify-center`}>
+   <div className={`${className} flex items-center justify-center relative`}>
       {/* Transparent Glass Div */}
       {show && (
         <div
           className="
-          w-full lg:w-3/4 p-2 mt-2 mb-2
+          w-full lg:h-[60vh] lg:w-3/4 p-2 mt-2 mb-2
           lg:p-10 lg:rounded-2xl
           bg-[dodgerblue]
           shadow-xl 
           border border-white/30
           text-center text-white
+          lg:overflow-y-auto
+          mt-20
         "
         >
           <h2 className="text-2xl font-bold mb-4">About Us</h2>

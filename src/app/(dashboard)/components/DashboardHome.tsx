@@ -67,7 +67,7 @@ export default function DashboardHome() {
 
 <button
   className="flex flex-col items-center bg-blue-100 hover:bg-blue-200 p-4 rounded-xl cursor-pointer"
-  onClick={() => setActiveRoute({ name: "Gallery", component: <GalleryPage /> })}
+  // onClick={() => setActiveRoute({ name: "Gallery", component: <GalleryPage /> })}
 >
   <FiUpload className="text-3xl text-blue-600" />
   <span className="mt-2 font-medium">Edit Gallery</span>
