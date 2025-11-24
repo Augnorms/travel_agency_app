@@ -7,6 +7,7 @@ import GalleryPage from "../components/GalleryPage";
 import EventPage from "../components/EventPage";
 import Payment from "../components/Payment";
 import Logout from "@/app/(dashboard)/components/Logout";
+import Link from "next/link";
 
 export default function DashboardUI({ user }: { user: any }) {
     const routes = [
@@ -41,8 +42,8 @@ function DashboardContent({ user, routes }: { user: any; routes: any }) {
                             key={route.name}
                             onClick={() => setActiveRoute(route)}
                             className={`p-3 rounded-lg cursor-pointer transition-all ${activeRoute.name === route.name
-                                    ? "bg-purple-100 text-purple-700 font-semibold shadow-sm"
-                                    : "text-gray-700 hover:bg-gray-100"
+                                ? "bg-purple-100 text-purple-700 font-semibold shadow-sm"
+                                : "text-gray-700 hover:bg-gray-100"
                                 }`}
                         >
                             {route.name}
@@ -54,10 +55,18 @@ function DashboardContent({ user, routes }: { user: any; routes: any }) {
 
             <div className="flex-1 flex flex-col">
                 <header className="bg-white shadow-sm p-4 flex justify-between items-center">
-                    <div>
-                        <h1 className="text-xl font-bold text-gray-800">{activeRoute.name}</h1>
-                        <p className="text-sm text-gray-500">Hello, {user.firstname}</p>
+                    <div className="flex">
+                        <div>
+                            <h1 className="text-xl font-bold text-gray-800">{activeRoute.name}</h1>
+                            <p className="text-sm text-gray-500">Hello, {user.firstname}</p>
+                        </div>
+                        <div className="ml-8 mt-2 cursor-pointer">
+                            <Link href={"/home"}>
+                              <img src="/svg/home.svg" alt="home" />
+                            </Link>
+                        </div>
                     </div>
+
                     <div className="relative group">
                         <div className="flex items-center gap-3 cursor-pointer">
                             <div className="w-10 h-10 bg-purple-600 text-white rounded-full flex items-center justify-center font-semibold shadow-md">

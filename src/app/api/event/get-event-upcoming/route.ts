@@ -1,0 +1,75 @@
+import { cookies } from "next/headers";
+import { NextRequest, NextResponse } from "next/server";
+import supabase from "../../db_connect/superbaseClient";
+
+export async function GET(req: NextRequest) {
+    try {
+        // --------------------------
+        // 1️⃣ Read HttpOnly cookie
+        // --------------------------
+        const cookieStore = await cookies();
+        const token = cookieStore.get("token")?.value;
+
+        if (!token) {
+            return NextResponse.json(
+                { ok: false, message: "Unauthorized" },
+                { status: 401 }
+            );
+        }
+
+        // --------------------------
+        // 2️⃣ Verify session in database
+        // --------------------------
+        const { data: sessions, error: sessionError } = await supabase
+            .from("sessions")
+            .select("*")
+            .eq("token", token)
+            .limit(1);
+
+        if (sessionError) {
+            return NextResponse.json(
+                { ok: false, message: "Session check failed" },
+                { status: 500 }
+            );
+        }
+
+        if (!sessions || sessions.length === 0) {
+            return NextResponse.json(
+                { ok: false, message: "Invalid or expired session" },
+                { status: 401 }
+            );
+        }
+
+        // --------------------------
+        // 3️⃣ Fetch all events
+        // --------------------------
+        const { data, error } = await supabase
+            .from("upcoming_events")
+            .select("*")
+            .order("start_date", { ascending: true });
+
+        if (error) {
+            return NextResponse.json({ ok: false, message: error.message }, { status: 500 });
+        }
+
+        // --------------------------
+        // 4️⃣ Format dates to YYYY-MM-DD
+        // --------------------------
+        const formattedData = data?.map((event: any) => ({
+            ...event,
+            start_date: event.start_date ? event.start_date.split("T")[0] : null,
+            end_date: event.end_date ? event.end_date.split("T")[0] : null,
+            created_at: event.created_at ? event.created_at.split("T")[0] : null,
+            updated_at: event.updated_at ? event.updated_at.split("T")[0] : null,
+        }));
+
+        return NextResponse.json({ ok: true, data: formattedData, message: "Fetched successfully" });
+
+    } catch (err) {
+        console.error(err);
+        return NextResponse.json(
+            { ok: false, message: "Internal Server Error" },
+            { status: 500 }
+        );
+    }
+}

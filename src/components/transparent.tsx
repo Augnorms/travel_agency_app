@@ -14,7 +14,7 @@ export default function Transparent(prop: Prop) {
       created_at: "",
       updated_at: ""
     });
-    const [IsLoading, setIsLoading] = useState(false);
+    const [_isLoading, setIsLoading] = useState(false);
 
      //fetch about content
   const fetchAboutContent = async () => {

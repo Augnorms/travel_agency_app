@@ -169,7 +169,7 @@ export const FilesUploads = (props: FileInterface) => {
         accept="image/*, video/*, application/pdf, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
       />
       <button
-        className="p-2 rounded bg-gray-50"
+        className="p-2 rounded bg-cyan-500 text-white cursor-pointer"
         onClick={() => {
           const fileInput = document.getElementById(props.fileInput);
           if (fileInput) fileInput.click();

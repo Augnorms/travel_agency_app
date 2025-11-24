@@ -1,8 +1,8 @@
 "use client";
 
-
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function Page() {
     const router = useRouter();
@@ -118,7 +118,9 @@ export default function Page() {
                     >
                         {loading ? "Logging in..." : "Login"}
                     </button>
-
+                    <Link href="/home" className="text-blue-600 hover:underline">
+                        Navigate back home? click here
+                    </Link>
                 </form>
             </div>
         </div>

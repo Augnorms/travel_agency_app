@@ -84,8 +84,6 @@ export default function Header({
                 {item.label}
               </Link>
 
-
-              {/* Dropdown (Desktop) */}
               {/* Dropdown (Desktop) */}
               {hasChildren && (
                 <div
