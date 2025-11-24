@@ -151,8 +151,6 @@ export default function AboutPage() {
       if (response.ok) {
         const result = await response.json();
 
-        console.log("API Result:", result.data);
-
         // result.data is the actual about record
         if (result.data) {
           setAboutContent(result.data);  // Remove array brackets
@@ -166,7 +164,6 @@ export default function AboutPage() {
           });
         }
 
-        console.log("About Content:", aboutContent);
       }
 
     } catch (error) {
