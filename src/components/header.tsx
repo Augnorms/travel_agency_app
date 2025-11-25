@@ -35,10 +35,12 @@ export default function Header({
     },
     { label: "Gallery", href: "/gallery" },
     { label: "Contact", href: "/contact" },
-    { label: "Login", href: "#", children: [
-      { label: "Login", href: "/dashboard" },
-      { label: "dashboard", href: "/dashboard" },
-    ] },
+    {
+      label: "Login", href: "#", children: [
+        { label: "Login", href: "/dashboard" },
+        { label: "dashboard", href: "/dashboard" },
+      ]
+    },
   ],
   bgColor = "white",
   textColor = "black",
@@ -62,12 +64,10 @@ export default function Header({
         <Logo width={50} height={50} />
       </div>
 
-      <div>
-        <h2 className="hidden lg:block p-2 text-[28px] text-center font-bold text-blue-500 underline decoration-[dodgerblue]">
-          Shama Sister City Commission <br />
-          United Kingdom
-        </h2>
-      </div>
+      <h2 className="hidden lg:block p-2 text-[24px] text-center font-bold text-blue-500 whitespace-nowrap underline decoration-[dodgerblue]">
+        Shama Sister City Commission United Kingdom
+      </h2>
+
 
       {/* Desktop nav */}
       <nav className="hidden md:flex space-x-6 relative">

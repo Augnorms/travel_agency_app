@@ -22,33 +22,34 @@ export default function Payment() {
   const [isEdit, setIsEdit] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [dropDownId, setDropDownId] = useState<number | null>(null);
+  const [page, setPage] = useState<boolean>(false)
 
-const certificateHeaders = [
-  { key: "id", label: "ID" },
-  { key: "title", label: "Title" },
-  { key: "description", label: "Description" },
-  { key: "attendee", label: "Attendee" },
-  { key: "issuer", label: "Issuer" },
-  { key: "event_name", label: "Event Name" },
-  { key: "location", label: "Location" },
-  { key: "date_range", label: "Date Range" },
-  { key: "image_url", label: "Image URL" },
-  { key: "image_path", label: "Image Path" },
-  { key: "created_at", label: "Created At" },
-  { key: "updated_at", label: "Updated At" },
-  { key: "action", label: "Action" }, // for edit/delete buttons
-];
+  const certificateHeaders = [
+    { key: "id", label: "ID" },
+    { key: "title", label: "Title" },
+    { key: "description", label: "Description" },
+    { key: "attendee", label: "Attendee" },
+    { key: "issuer", label: "Issuer" },
+    { key: "event_name", label: "Event Name" },
+    { key: "location", label: "Location" },
+    { key: "date_range", label: "Date Range" },
+    { key: "image_url", label: "Image URL" },
+    { key: "image_path", label: "Image Path" },
+    { key: "created_at", label: "Created At" },
+    { key: "updated_at", label: "Updated At" },
+    { key: "action", label: "Action" }, // for edit/delete buttons
+  ];
 
 
-const handleMouseClick = (id: number) => {
+  const handleMouseClick = (id: number) => {
 
-};
+  };
 
-const handleMouseLeave = () => {
+  const handleMouseLeave = () => {
 
-};
+  };
 
- const emitAction = (userId: string | number, action: string) => {
+  const emitAction = (userId: string | number, action: string) => {
 
     if (action === "Delete") {
       setDeleteId(userId);
@@ -59,7 +60,7 @@ const handleMouseLeave = () => {
     }
   };
 
- // Custom cell rendering
+  // Custom cell rendering
   const renderCellContent = (headerKey: string, item: any) => {
     switch (headerKey) {
       case "action":
@@ -92,7 +93,7 @@ const handleMouseLeave = () => {
   };
 
   const handleDelete = () => {
-   
+
   };
 
   const handledeleteCancel = () => {
@@ -109,61 +110,69 @@ const handleMouseLeave = () => {
 
 
   return (
+    <>
+      {page ?
         <div className="h-[80vh] px-4 py-4 space-y-5">
-      <SuccessBlock blockControl={successBlockStatus} message={blockMessage} />
-      <ErrorBlock blockControl={errorBlockStatus} message={blockMessage} />
+        <SuccessBlock blockControl={successBlockStatus} message={blockMessage} />
+        <ErrorBlock blockControl={errorBlockStatus} message={blockMessage} />
 
-      <DeleteDialogue
-        onDelete={handleDelete}
-        onCancel={handledeleteCancel}
-        popup={isDeleteModalOpen}
-        text={"user: " + String(deleteId) + " ?"}
-        loading={loadingData}
-        disabled={loadingData}
-      />
+        <DeleteDialogue
+          onDelete={handleDelete}
+          onCancel={handledeleteCancel}
+          popup={isDeleteModalOpen}
+          text={"user: " + String(deleteId) + " ?"}
+          loading={loadingData}
+          disabled={loadingData}
+        />
 
-      <Modal isOpen={isOpen} onClose={onClose} title={isEdit ? "Edit User" : "Create User"}>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-   
+        <Modal isOpen={isOpen} onClose={onClose} title={isEdit ? "Edit User" : "Create User"}>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+            </div>
+          </form>
+        </Modal>
+
+        {/* PAGE TITLE */}
+        <h1 className="text-2xl font-semibold">Gallery Page Management</h1>
+
+        <h3 className="text-lg font-semibold text-gray-700">
+          Content Count: <span className="text-cyan-600">{ }</span>
+        </h3>
+
+
+        <div className="flex items-center justify-between">
+          <div className="max-w-[300px] w-full">
+            <SearchComp
+              classStyle="ring-2 ring-cyan-500 p-2 rounded-xl border"
+              placeholder="Search users..."
+            />
+
           </div>
-        </form>
-      </Modal>
 
-      {/* PAGE TITLE */}
-      <h1 className="text-2xl font-semibold">Gallery Page Management</h1>
-
-      <h3 className="text-lg font-semibold text-gray-700">
-        Content Count: <span className="text-cyan-600">{}</span>
-      </h3>
-
-
-      <div className="flex items-center justify-between">
-        <div className="max-w-[300px] w-full">
-          <SearchComp
-            classStyle="ring-2 ring-cyan-500 p-2 rounded-xl border"
-            placeholder="Search users..."
+          <Button
+            buttonLabel="Add Payment"
+            className="border p-2 rounded-md text-white bg-cyan-400"
+            onClick={() => setIsOpen(true)}
           />
-
         </div>
 
-        <Button
-          buttonLabel="Add Payment"
-          className="border p-2 rounded-md text-white bg-cyan-400"
-          onClick={() => setIsOpen(true)}
-        />
-      </div>
 
-
-      {/* TABLE */}
-      <div className="h-[65vh]">
-        <TableComponent
-          headers={certificateHeaders}
-          classhead="bg-gray-100"
-          items={[]}
-          renderCellContent={renderCellContent}
-        />
+        {/* TABLE */}
+        <div className="h-[65vh]">
+          <TableComponent
+            headers={certificateHeaders}
+            classhead="bg-gray-100"
+            items={[]}
+            renderCellContent={renderCellContent}
+          />
+        </div>
       </div>
-    </div>
+      :
+      <div className="h-[80vh] px-4 py-4 space-y-5">
+         <h1 className="text-2xl font-semibold">Page under contruction</h1>
+      </div>
+      }
+    </>
   )
 }

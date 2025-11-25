@@ -36,9 +36,9 @@ export default function Page() {
                 setTimeout(() => {
                     setStatus(false);
                     setMessage("");
-                     router.push("/dashboard");
+                    router.push("/dashboard");
                 }, 3000);
-               
+
             } else {
                 setStatus(data.ok);
                 setMessage(data.message);
@@ -57,8 +57,9 @@ export default function Page() {
     };
 
     return (
-        <div className="min-h-[62vh] flex items-center justify-center bg-gray-100 p-8">
-            <div className="w-full max-w-md bg-white shadow-xl rounded-xl p-8">{status}
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-cyan-800 to-cyan-100 p-8">
+            <div className="w-full max-w-md bg-white shadow-xl rounded-xl p-8 ">
+                 {status}
                 <h2 className="text-2xl font-bold text-center mb-6" style={{ color: status ? "green" : "red" }}>
                     {message}
                 </h2>

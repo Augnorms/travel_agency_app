@@ -5,6 +5,7 @@ import AboutPage from "../components/AboutPage";
 import GalleryPage from "../components/GalleryPage";
 import EventPage from "../components/EventPage";
 import Payment from "../components/Payment";
+import { useEffect, useState } from "react";
 
 type CardProps = {
   title: string;
@@ -27,6 +28,46 @@ const AnalyticsCard = ({ title, value, icon, bgColor = "bg-white", textColor = "
 export default function DashboardHome() {
   const { setActiveRoute } = useDashboardNav();
 
+  const [userCount, setUserCount] = useState(0);
+  const [upcomingEventCount, setUpcomingEventCount] = useState(0);
+  const [eventMemoriesCount, setEventMemoriesCount] = useState(0);
+
+  useEffect(() => {
+    const fetchUserCount = async () => {
+      try {
+        const response = await fetch("/api/summary/user-summary");
+        const data = await response.json();
+        setUserCount(data.userCount);
+      } catch (error) {
+        console.error("Error fetching user count:", error);
+      }
+    };
+
+    const fetchUpcomingEventCount = async () => {
+      try {
+        const response = await fetch("/api/summary/upcoming-event-summary");
+        const data = await response.json();
+        setUpcomingEventCount(data.upcomingEventCount);
+      } catch (error) {
+        console.error("Error fetching upcoming event count:", error);
+      }
+    };
+
+    const fetchEventMemoriesCount = async () => {
+      try {
+        const response = await fetch("/api/summary/memories-event-summary");
+        const data = await response.json();
+        setEventMemoriesCount(data.eventMemoriesCount);
+      } catch (error) {
+        console.error("Error fetching event memories count:", error);
+      }
+    };
+
+    fetchUserCount();
+    fetchUpcomingEventCount();
+    fetchEventMemoriesCount();
+  }, []);
+
   return (
     <div className="w-full h-full p-6 space-y-8">
       {/* HEADER */}
@@ -39,11 +80,11 @@ export default function DashboardHome() {
 
       {/* KPI CARDS */}
       <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
-        <AnalyticsCard title="Total Uploads" value={124} icon={<FiUpload className="text-indigo-600" />} />
-        <AnalyticsCard title="Total Users" value={58} icon={<FiUsers className="text-green-600" />} />
-        <AnalyticsCard title="Upcoming Events" value={12} icon={<FiBarChart2 className="text-rose-600" />} />
-        <AnalyticsCard title="Payments Processed" value="$4,560" icon={<FiCreditCard className="text-green-600" />} />
-        <AnalyticsCard title="Storage Used" value="72%" icon={<FiAlertCircle className="text-yellow-600" />} />
+        <AnalyticsCard title="Total Uploads" value={0} icon={<FiUpload className="text-indigo-600" />} />
+        <AnalyticsCard title="Total Users" value={userCount} icon={<FiUsers className="text-green-600" />} />
+        <AnalyticsCard title="Upcoming Events" value={upcomingEventCount} icon={<FiBarChart2 className="text-rose-600" />} />
+        <AnalyticsCard title="Payments Processed" value="0" icon={<FiCreditCard className="text-green-600" />} />
+        <AnalyticsCard title="Event Memories" value={eventMemoriesCount} icon={<FiAlertCircle className="text-yellow-600" />} />
       </div>
 
       {/* QUICK ACTIONS */}
