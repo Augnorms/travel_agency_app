@@ -627,6 +627,7 @@ export default function EventPage() {
               buttonLabel={isEdit ? "Update memories" : "Add memories"}
               className="border p-2 rounded-md text-white bg-cyan-400"
               onClick={handleSubmitMemories}
+              disabled={formMemData.title === "" || formMemData.description === ""}
               loading={loadingData}
             />
           </div>
@@ -637,15 +638,15 @@ export default function EventPage() {
       <h1 className="text-2xl font-semibold">Event Page Management</h1>
 
       <h3 className="text-lg font-semibold text-gray-700">
-        Content Count: <span className="text-cyan-600">{returnDataUpcoming.length || returnDataMemories.length}</span>
+        Event Count: <span className="text-cyan-600">{returnDataUpcoming.length || returnDataMemories.length}</span>
       </h3>
 
-
+ 
       <div className="flex items-center justify-between">
         <div className="max-w-[300px] w-full">
           <SearchComp
             classStyle="ring-2 ring-cyan-500 p-2 rounded-xl border"
-            placeholder="Search users..."
+            placeholder="Search event..."
             handlesearch={(e) => handleSearch(e.target.value)}
             value={searchTerm}
           />
