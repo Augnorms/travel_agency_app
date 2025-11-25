@@ -30,7 +30,8 @@ function DashboardContent({ user, routes }: { user: any; routes: any }) {
 
     const { activeRoute, setActiveRoute } = useDashboardNav();
 
-    const initials = `${user.firstname?.[0] ?? ""}${user.lastname?.[0] ?? ""}`.toUpperCase();
+
+    const initials = `${user?.firstname?.[0] ?? ""}${user?.lastname?.[0] ?? ""}`.toUpperCase();
 
     return (
         <div className="min-h-screen flex bg-gray-50">
@@ -62,7 +63,7 @@ function DashboardContent({ user, routes }: { user: any; routes: any }) {
                         </div>
                         <div className="ml-8 mt-2 cursor-pointer">
                             <Link href={"/home"}>
-                              <img src="/svg/home.svg" alt="home" />
+                                <img src="/svg/home.svg" alt="home" />
                             </Link>
                         </div>
                     </div>
