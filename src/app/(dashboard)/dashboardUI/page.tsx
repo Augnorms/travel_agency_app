@@ -59,7 +59,7 @@ function DashboardContent({ user, routes }: { user: any; routes: any }) {
                     <div className="flex">
                         <div>
                             <h1 className="text-xl font-bold text-gray-800">{activeRoute.name}</h1>
-                            <p className="text-sm text-gray-500">Hello, {user.firstname}</p>
+                            <p className="text-sm text-gray-500">Hello, {user?.firstname}</p>
                         </div>
                         <div className="ml-8 mt-2 cursor-pointer">
                             <Link href={"/home"}>
@@ -73,7 +73,7 @@ function DashboardContent({ user, routes }: { user: any; routes: any }) {
                             <div className="w-10 h-10 bg-purple-600 text-white rounded-full flex items-center justify-center font-semibold shadow-md">
                                 {initials}
                             </div>
-                            <span className="font-medium text-gray-700">{user.firstname}</span>
+                            <span className="font-medium text-gray-700">{user?.firstname}</span>
                         </div>
                         <div className="absolute right-0 mt-3 w-44 bg-white border rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all p-2 space-y-1">
                             <Logout />
