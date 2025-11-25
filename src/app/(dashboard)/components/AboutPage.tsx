@@ -243,7 +243,7 @@ export default function AboutPage() {
       <h1 className="text-2xl font-semibold">About Page Management</h1>
 
       <h3 className="text-lg font-semibold text-gray-700">
-        Content Count: <span className="text-cyan-600">{ }</span>
+        {/* Content Count: <span className="text-cyan-600">{  }</span> */}
       </h3>
 
 

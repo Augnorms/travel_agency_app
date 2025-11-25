@@ -35,7 +35,10 @@ export default function Header({
     },
     { label: "Gallery", href: "/gallery" },
     { label: "Contact", href: "/contact" },
-    { label: "Login", href: "/login" },
+    { label: "Login", href: "#", children: [
+      { label: "Login", href: "/dashboard" },
+      { label: "dashboard", href: "/dashboard" },
+    ] },
   ],
   bgColor = "white",
   textColor = "black",
@@ -87,11 +90,11 @@ export default function Header({
               {/* Dropdown (Desktop) */}
               {hasChildren && (
                 <div
-                  className="absolute left-0 mt-3 w-48 bg-white border-3 border-blue-200 
+                  className="absolute right-0 mt-3 w-48 bg-white border-3 border-blue-200 
                rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 
                group-hover:visible group-hover:translate-y-2 transform 
                transition-all duration-300 z-50
-               before:content-[''] before:absolute before:-top-2 before:left-6
+               before:content-[''] before:absolute before:-top-2 before:right-6
                before:border-l-8 before:border-r-8 before:border-b-8
                before:border-l-transparent before:border-r-transparent before:border-b-white"
                 >

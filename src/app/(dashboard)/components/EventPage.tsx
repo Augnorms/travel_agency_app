@@ -276,12 +276,13 @@ export default function EventPage() {
         headers: {
           "Content-Type": "application/json",
         },
-      });
+      }); 
 
       const data = await response.json();
 
       if (data.ok) {
         setReturnDataUpcoming(data.data);
+        setSearchResults(data.data);
       }
     }
     catch (error) {
@@ -372,10 +373,10 @@ export default function EventPage() {
       });
 
       const data = await response.json();
-      console.log(data.data)
 
       if (data.ok) {
         setReturnDataMemories(data.data);
+        setSearchResults(data.data);
       }
     }
     catch (error) {
@@ -388,47 +389,75 @@ export default function EventPage() {
   }, [])
 
 
-//handle delete for memmorie event
-const handleMemDelete = async()=>{
-  setLoadingData(true)
-  console.log(deleteId)
-  try{
-    const response = await fetch("/api/event/delete-event-memories", {
-      method: "DELETE",
-      credentials: 'include',
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ id: deleteId }),
-    });
+  //handle delete for memmorie event
+  const handleMemDelete = async () => {
+    setLoadingData(true)
+    console.log(deleteId)
+    try {
+      const response = await fetch("/api/event/delete-event-memories", {
+        method: "DELETE",
+        credentials: 'include',
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ id: deleteId }),
+      });
 
-    const data = await response.json();
+      const data = await response.json();
 
-    if (data.ok) {
-      setSuccessBlockStatus(true);
-      setBlockMessage(data.message);
-      setIsDeleteModalOpen(false);
+      if (data.ok) {
+        setSuccessBlockStatus(true);
+        setBlockMessage(data.message);
+        setIsDeleteModalOpen(false);
+
+        setTimeout(() => {
+          setSuccessBlockStatus(false);
+          setBlockMessage("");
+          onClose();
+          handlefetchMemories();
+        }, 3000);
+      }
+    } catch (error) {
+      console.log(error)
+      setErrorBlockStatus(true);
+      setBlockMessage("Error deleting event: " + error);
 
       setTimeout(() => {
-        setSuccessBlockStatus(false);
+        setErrorBlockStatus(false);
         setBlockMessage("");
-        onClose();
-        handlefetchMemories();
       }, 3000);
+    } finally {
+      setLoadingData(false)
     }
-  }catch(error){
-    console.log(error)
-    setErrorBlockStatus(true);
-    setBlockMessage("Error deleting event: " + error);
-
-    setTimeout(() => {
-      setErrorBlockStatus(false);
-      setBlockMessage("");
-    }, 3000);
-  }finally{
-     setLoadingData(false)
   }
-}
+
+  //performing search
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchResults, setSearchResults] = useState<FormData[]>([]);
+
+
+  const handleSearch = (term: string) => {
+    setSearchTerm(term);
+
+    if (!term.trim()) {
+      setReturnDataUpcoming(searchResults);
+      setReturnDataMemories(searchResults) // restore original list
+      return;
+    }
+
+    if (isTabOrCardOpen === "upcoming") {
+      const filtered = searchResults.filter((item) => {
+        return item.title.toLowerCase().includes(term.toLowerCase());
+      });
+      setReturnDataUpcoming(filtered);
+    } else {
+      const filtered = searchResults.filter((item) => {
+        return item.title.toLowerCase().includes(term.toLowerCase());
+      });
+      setReturnDataMemories(filtered);
+    }
+
+  }
 
 
   const onClose = () => {
@@ -608,7 +637,7 @@ const handleMemDelete = async()=>{
       <h1 className="text-2xl font-semibold">Event Page Management</h1>
 
       <h3 className="text-lg font-semibold text-gray-700">
-        Content Count: <span className="text-cyan-600">{ }</span>
+        Content Count: <span className="text-cyan-600">{returnDataUpcoming.length || returnDataMemories.length}</span>
       </h3>
 
 
@@ -617,6 +646,8 @@ const handleMemDelete = async()=>{
           <SearchComp
             classStyle="ring-2 ring-cyan-500 p-2 rounded-xl border"
             placeholder="Search users..."
+            handlesearch={(e) => handleSearch(e.target.value)}
+            value={searchTerm}
           />
 
         </div>

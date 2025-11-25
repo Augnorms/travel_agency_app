@@ -68,7 +68,7 @@ export default function EventBanner() {
             </div>
 
 
-            <div className="w-full h-[60vh] relative perspective-1000 bg-gradient-to-r from-blue-600 to-purple-700 overflow-hidden">
+            <div className="w-full h-[60vh] relative perspective-1000 bg-gradient-to-r from-white to-cyan-800 overflow-hidden">
                 <div
                     ref={spinRef}
                     className="w-full h-full absolute top-0 left-0 transform-3d animate-spin-3d"
