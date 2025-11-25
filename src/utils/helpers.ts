@@ -13,3 +13,11 @@ export function escapeHtml(unsafe: string) {
         .replaceAll('"', "&quot;")
         .replaceAll("'", "&#039;");
 }
+
+export function capitalizeWords(str: string) {
+    return str
+        .toLowerCase()
+        .split(' ')
+        .map((word: string) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ');
+}

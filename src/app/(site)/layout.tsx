@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "../app/globals.css";
+import "../globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 
@@ -30,8 +30,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
+    <>
+      <div
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {/* Fixed Background */}
@@ -47,11 +47,11 @@ export default function RootLayout({
 
         {/* Foreground Content */}
         <div className="relative z-10 min-h-screen font-sans">
-          {/* <Header /> */}
+          <Header />
           {children}
-          {/* <Footer /> */}
+          <Footer />
         </div>
-      </body>
-    </html>
+      </div>
+    </>
   );
 }

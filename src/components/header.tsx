@@ -22,7 +22,7 @@ type HeaderProps = {
 
 export default function Header({
   navItems = [
-    { label: "Home", href: "/" },
+    { label: "Home", href: "/home" },
     { label: "About", href: "/about" },
     {
       label: "Activities",
@@ -35,6 +35,12 @@ export default function Header({
     },
     { label: "Gallery", href: "/gallery" },
     { label: "Contact", href: "/contact" },
+    {
+      label: "Login", href: "#", children: [
+        { label: "Login", href: "/dashboard" },
+        { label: "dashboard", href: "/dashboard" },
+      ]
+    },
   ],
   bgColor = "white",
   textColor = "black",
@@ -58,12 +64,10 @@ export default function Header({
         <Logo width={50} height={50} />
       </div>
 
-      <div>
-        <h2 className="hidden lg:block p-2 text-[28px] text-center font-bold text-blue-500 underline decoration-[dodgerblue]">
-          Shama Sister City Commission <br />
-          United Kingdom
-        </h2>
-      </div>
+      <h2 className="hidden lg:block p-2 text-[24px] text-center font-bold text-blue-500 whitespace-nowrap underline decoration-[dodgerblue]">
+        Shama Sister City Commission United Kingdom
+      </h2>
+
 
       {/* Desktop nav */}
       <nav className="hidden md:flex space-x-6 relative">
@@ -76,28 +80,21 @@ export default function Header({
             <div key={idx} className="relative group">
               <Link
                 href={item.href}
-                className={`px-4 py-2 rounded-md border-b-2 transition transform duration-200
-                  hover:scale-110 hover:shadow-lg
-                  ${
-                    isActive
-                      ? "border-b-[dodgerblue] font-bold text-blue-600"
-                      : "border-b-transparent"
-                  }
-                `}
-                style={{ color: textColor }}
+                className={`px-4 py-2 rounded-md border-b-2 transition transform duration-200 hover:scale-110 hover:shadow-lg ${isActive ? "border-b-[dodgerblue] font-bold text-blue-600" : "border-b-transparent"
+                  } ${item.href === "/login" ? "md:border md:border-blue-500 md:bg-blue-400 text-white md:font-semibold" : ""
+                  }`}
               >
                 {item.label}
               </Link>
 
               {/* Dropdown (Desktop) */}
-              {/* Dropdown (Desktop) */}
               {hasChildren && (
                 <div
-                  className="absolute left-0 mt-3 w-48 bg-white border-3 border-blue-200 
+                  className="absolute right-0 mt-3 w-48 bg-white border-3 border-blue-200 
                rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 
                group-hover:visible group-hover:translate-y-2 transform 
                transition-all duration-300 z-50
-               before:content-[''] before:absolute before:-top-2 before:left-6
+               before:content-[''] before:absolute before:-top-2 before:right-6
                before:border-l-8 before:border-r-8 before:border-b-8
                before:border-l-transparent before:border-r-transparent before:border-b-white"
                 >
@@ -157,11 +154,11 @@ export default function Header({
               <Link
                 href={item.href}
                 className={`block px-4 py-2 rounded-md border-b-2 transition
-                  ${
-                    isActive
-                      ? "border-b-[dodgerblue] font-bold text-blue-600"
-                      : "border-b-transparent"
+                  ${isActive
+                    ? "border-b-[dodgerblue] font-bold text-blue-600"
+                    : "border-b-transparent"
                   }
+                  ${item.href === "/login" && "hidden"}
                 `}
                 style={{ color: textColor }}
                 onClick={() => setIsOpen(false)}
