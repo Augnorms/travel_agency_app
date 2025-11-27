@@ -53,7 +53,7 @@ export default function Header({
   return (
     <>
       <header
-        className={`w-full px-6 py-4 flex items-center justify-between ${className}`}
+        className={`w-full px-6 py-4 flex items-center justify-between bg-gradient-to-r from-cyan-600 to-white ${className}`}
         style={{
           backgroundColor: bgColor,
           color: textColor,
