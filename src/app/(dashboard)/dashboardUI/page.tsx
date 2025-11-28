@@ -33,7 +33,7 @@ function DashboardContent({ user, routes }: { user: any; routes: any }) {
     const initials = `${user?.firstname?.[0] ?? ""}${user?.lastname?.[0] ?? ""}`.toUpperCase();
 
     return (
-        <div className="min-h-screen flex bg-gray-50">
+        <div className="min-h-screen flex bg-gray-50 overflow-x-auto">
             <aside className="w-64 bg-white border-r shadow-sm p-5 flex flex-col">
                 <div className="text-2xl font-bold text-purple-700 mb-8">My Dashboard</div>
                 <ul className="space-y-2 flex-1">
@@ -84,13 +84,14 @@ function DashboardContent({ user, routes }: { user: any; routes: any }) {
                 </header>
 
                 <main className="
-                       h-screen
                        p-6
                        bg-[url('/assets/background-image.svg')]
                       bg-cover bg-center bg-no-repeat
+                      h-[calc(100vh-80px)] 
+                      overflow-y-auto
                  ">
 
-                    <div className="bg-white p-6 rounded-xl shadow-md border">
+                    <div className="bg-white p-6 rounded-xl shadow-md border overflow-x-auto">
                         {activeRoute.component}
                     </div>
 

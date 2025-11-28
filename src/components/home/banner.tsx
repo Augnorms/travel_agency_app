@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import Logo from "../logo";
 
 type BannerProps = {
   headline?: string;
@@ -83,7 +84,7 @@ export default function Banner({
           max-w-6xl w-full ${cardStyle}`}
       >
         {/* Logo */}
-        <div
+        {/* <div
           className="flex flex-col items-center justify-center 
           w-32 h-32 md:w-40 md:h-40 rounded-full font-bold shadow-lg mb-6"
           style={{
@@ -100,11 +101,12 @@ export default function Banner({
             {bottomText}
             <sup className="text-xl align-super">{bottomSuperscript}</sup>
           </div>
-        </div>
+        </div> */}
+        <Logo width={200} height={200} />
 
         {/* Headline with typing animation */}
         <h1
-          className="font-serif font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight"
+          className="font-serif font-bold text-2xl sm:text-xl md:text-3xl lg:text-3xl leading-tight"
           style={{ color: secondaryColor }}
         >
           {displayedText}

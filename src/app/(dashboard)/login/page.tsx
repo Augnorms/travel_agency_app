@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Logo from "@/components/logo";
 
 export default function Page() {
     const router = useRouter();
@@ -59,6 +60,9 @@ export default function Page() {
     return (
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-cyan-800 to-cyan-100 p-8">
             <div className="w-full max-w-md bg-white shadow-xl rounded-xl p-8 ">
+                  <div className="flex justify-center p-2">
+               <Logo width={50} height={50} />
+            </div>
                  {status}
                 <h2 className="text-2xl font-bold text-center mb-6" style={{ color: status ? "green" : "red" }}>
                     {message}
