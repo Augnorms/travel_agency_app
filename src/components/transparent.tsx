@@ -63,7 +63,7 @@ export default function Transparent(prop: Prop) {
       {show && (
         <div
           className="
-          w-full lg:h-[60vh] lg:w-3/4 p-2 mt-2 mb-2
+          w-full lg:h-[100%] lg:w-3/4 p-2 mt-2 mb-2
           lg:p-10 lg:rounded-2xl
           bg-[dodgerblue]
           shadow-xl 
