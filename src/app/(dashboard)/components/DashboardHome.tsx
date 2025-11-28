@@ -16,7 +16,7 @@ type CardProps = {
 };
 
 const AnalyticsCard = ({ title, value, icon, bgColor = "bg-white", textColor = "text-cyan-400" }: CardProps) => (
-  <div className={`${bgColor} rounded-xl shadow p-5 border border-blue-700 flex flex-col items-start`}>
+  <div className={`${bgColor} rounded-xl shadow p-5 border border-blue-700 text-nowrap flex flex-col items-start`}>
     <div className="flex items-center justify-between w-full">
       <p className={`${textColor} text-sm`}>{title}</p>
       {icon && <div className="text-2xl">{icon}</div>}

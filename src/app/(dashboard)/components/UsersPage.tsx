@@ -156,6 +156,9 @@ useEffect(() => {
   // Custom cell rendering
   const renderCellContent = (headerKey: string, item: User | any) => {
     switch (headerKey) {
+      case 'email':
+        return <div title={item.email}>{item.email.slice(0, 20)+"..."}</div>
+
       case "action":
         return (
           <div className="relative">
@@ -381,7 +384,7 @@ useEffect(() => {
 
 
   return (
-    <div className="h-[80vh] px-4 py-4 space-y-5">
+    <div className="w-full h-[80vh] px-4 py-4 space-y-5">
       <SuccessBlock blockControl={successBlockStatus} message={blockMessage} />
       <ErrorBlock blockControl={errorBlockStatus} message={blockMessage} />
 
@@ -559,7 +562,7 @@ useEffect(() => {
 
 
       {/* TABLE */}
-      <div className="h-[65vh]">
+      <div className="w-full">
         <TableComponent
           headers={headers}
           classhead="bg-gray-100"
