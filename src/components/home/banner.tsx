@@ -102,7 +102,7 @@ export default function Banner({
             <sup className="text-xl align-super">{bottomSuperscript}</sup>
           </div>
         </div> */}
-        <Logo width={200} height={200} />
+        <Logo width={150} height={150} showAnimation={false}/>
 
         {/* Headline with typing animation */}
         <h1
