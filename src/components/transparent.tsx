@@ -83,9 +83,9 @@ export default function Transparent(prop: Prop) {
             :
             <p className="text-lg text-center mt-10">
               The Shama Sister City Commission (S₂C₂) is a community-based
-              advisory body registered in the the United Kingdom as a charitable
+              sister cities citizenship diplomacy advocacy body registered in the the United Kingdom as a charitable
               organization, dedicated to building enduring partnerships between
-              Shama Municipality (Ghana) and international sister cities. Since
+              African cities and international communities. Since
               2010, the Commission has nurtured a special connection with South
               Molton Town Council in Devonshire, UK, with the goal of promoting
               cultural, educational, and economic exchange. Our mission is to

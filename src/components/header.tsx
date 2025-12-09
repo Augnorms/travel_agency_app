@@ -66,7 +66,7 @@ export default function Header({
         </div>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex space-x-6 relative border border-blue-500 p-3 rounded-md shadow-lg">
+        <nav className="hidden md:flex space-x-6 relative p-3 rounded-md shadow-xl">
           {navItems.map((item, idx) => {
             const isChildActive = item.children?.some((child) => pathname.startsWith(child.href));
             const isActive = pathname === item.href || isChildActive;

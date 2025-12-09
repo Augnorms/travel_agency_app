@@ -20,8 +20,8 @@ export default function Footer() {
           <div className="flex-1 text-white/80 text-sm md:text-base text-center">
             <p>
               Building bridges between{" "}
-              <span className="font-semibold">Shama (Ghana)</span>
-              and <span className="font-semibold">South Molton (UK)</span> since
+              <span className="font-semibold underline">African countries </span>
+              and the <span className="font-semibold underline">rest of the world</span> since
               2010.
             </p>
             <p className="mt-1">
